@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xmlns:c="http://www.springframework.org/schema/c"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+http://www.springframework.org/schema/beans/spring-beans.xsd
+http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+
+    <bean id="propertyConfigurer"
+          class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer"
+          p:location="main/resources/jdbc.properties"/>
+
+    <bean name="driverManagerDAO" class="main.java.repository.jdbc.DriverManagerDAOJDBC"
+          p:driver="${driver}"
+          p:url="jdbc:${url}"
+          p:user="${user}"
+          p:password="${password}"
+          p:poolSize="${poolSize}"
+          init-method="createConnectionPool" destroy-method="closeAllConnections"
+            />
+
+    <bean name="countryDAO" class="main.java.repository.country.CountryDAOJDBC">
+        <constructor-arg ref="driverManagerDAO"/>
+    </bean>
+
+    <bean name="postDAO" class="main.java.repository.post.PostDAOJDBC">
+        <constructor-arg ref="driverManagerDAO"/>
+    </bean>
+
+    <bean name="sexDAO" class="main.java.repository.sex.SexDAOJDBC">
+        <constructor-arg ref="driverManagerDAO"/>
+    </bean>
+
+    <bean name="userDAO" class="main.java.repository.user.UserDAOJDBC">
+        <constructor-arg ref="driverManagerDAO"/>
+    </bean>
+
+</beans>
