@@ -1,18 +1,23 @@
-package main.java.service.user;
+package service.user;
 
-import main.java.domain.User;
-import main.java.repository.user.UserDAO;
+import domain.User;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import repository.user.UserDAO;
 
 import java.util.List;
 
 /**
  * Created by Admin on 24.05.2014.
  */
+@Service("UserService")
 public class UserServiceImpl implements UserService {
-    private final UserDAO repository;
+    @Autowired
+    private UserDAO repository;
 
-    public UserServiceImpl(UserDAO repository) {
-        this.repository = repository;
+    @Autowired
+    public UserServiceImpl(UserDAO userDAO) {
+        this.repository = userDAO;
     }
 
     @Override

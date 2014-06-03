@@ -1,15 +1,17 @@
-package main.java.repository.user;
+package repository.user;
 
-import main.java.domain.Country;
-import main.java.domain.Sex;
-import main.java.domain.User;
-import main.java.repository.jdbc.ConnectionFactory;
+import domain.Country;
+import domain.Sex;
+import domain.User;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
+import repository.jdbc.ConnectionFactory;
 
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
-import static main.java.repository.jdbc.DAOJDBCUtil.close;
+import static repository.jdbc.DAOJDBCUtil.close;
 
 /**
  * Created with IntelliJ IDEA.
@@ -18,6 +20,8 @@ import static main.java.repository.jdbc.DAOJDBCUtil.close;
  * Time: 17:20
  * To change this template use File | Settings | File Templates.
  */
+
+@Repository("userDAO")
 public class UserDAOJDBC implements UserDAO {
 
     private ConnectionFactory cnFactory;
@@ -129,6 +133,7 @@ public class UserDAOJDBC implements UserDAO {
             " where u.sys_delstate = 0" +
             "   and u.id = ?";
 
+    @Autowired
     public UserDAOJDBC(ConnectionFactory connection) {
         this.cnFactory = connection;
     }

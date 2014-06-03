@@ -1,7 +1,7 @@
-package main.java.repository.post;
+package repository.post;
 
-import main.java.domain.Post;
-import main.java.repository.jdbc.ConnectionFactory;
+import domain.Post;
+import repository.jdbc.ConnectionFactory;
 
 import java.util.List;
 

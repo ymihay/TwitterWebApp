@@ -1,6 +1,6 @@
-package main.java.service.user;
+package service.user;
 
-import main.java.domain.User;
+import domain.User;
 
 import java.util.List;
 

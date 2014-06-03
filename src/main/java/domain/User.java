@@ -1,4 +1,4 @@
-package main.java.domain;
+package domain;
 
 import java.sql.Timestamp;
 import java.util.List;

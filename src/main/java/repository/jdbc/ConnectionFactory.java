@@ -1,4 +1,4 @@
-package main.java.repository.jdbc;
+package repository.jdbc;
 
 import java.sql.Connection;
 import java.sql.SQLException;

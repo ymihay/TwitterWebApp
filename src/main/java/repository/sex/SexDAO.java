@@ -1,7 +1,7 @@
-package main.java.repository.sex;
+package repository.sex;
 
-import main.java.domain.Sex;
-import main.java.repository.jdbc.ConnectionFactory;
+import domain.Sex;
+import repository.jdbc.ConnectionFactory;
 
 import java.util.List;
 

@@ -1,7 +1,7 @@
-package main.java.repository.country;
+package repository.country;
 
-import main.java.domain.Country;
-import main.java.repository.jdbc.ConnectionFactory;
+import domain.Country;
+import repository.jdbc.ConnectionFactory;
 
 import java.util.List;
 

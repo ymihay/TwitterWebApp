@@ -1,7 +1,9 @@
-package main.java.repository.country;
+package repository.country;
 
-import main.java.domain.Country;
-import main.java.repository.jdbc.ConnectionFactory;
+import domain.Country;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
+import repository.jdbc.ConnectionFactory;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -10,7 +12,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import static main.java.repository.jdbc.DAOJDBCUtil.close;
+import static repository.jdbc.DAOJDBCUtil.close;
 
 /**
  * Created with IntelliJ IDEA.
@@ -19,6 +21,7 @@ import static main.java.repository.jdbc.DAOJDBCUtil.close;
  * Time: 19:23
  * To change this template use File | Settings | File Templates.
  */
+@Repository("countryRepository")
 public class CountryDAOJDBC implements CountryDAO {
 
     private final static String findCountryByIDSQL = "select * from TWT_COUNTRY where id=? and sys_delstate=0";
@@ -41,6 +44,7 @@ public class CountryDAOJDBC implements CountryDAO {
 
     private ConnectionFactory cnFactory;
 
+    @Autowired
     public CountryDAOJDBC(ConnectionFactory connection) {
         this.cnFactory = connection;
     }

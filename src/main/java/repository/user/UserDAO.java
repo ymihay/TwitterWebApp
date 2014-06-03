@@ -1,7 +1,7 @@
-package main.java.repository.user;
+package repository.user;
 
-import main.java.domain.User;
-import main.java.repository.jdbc.ConnectionFactory;
+import domain.User;
+import repository.jdbc.ConnectionFactory;
 
 import java.util.List;
 

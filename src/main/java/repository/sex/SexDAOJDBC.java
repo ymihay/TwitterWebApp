@@ -1,7 +1,9 @@
-package main.java.repository.sex;
+package repository.sex;
 
-import main.java.domain.Sex;
-import main.java.repository.jdbc.ConnectionFactory;
+import domain.Sex;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
+import repository.jdbc.ConnectionFactory;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -10,7 +12,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import static main.java.repository.jdbc.DAOJDBCUtil.close;
+import static repository.jdbc.DAOJDBCUtil.close;
 
 /**
  * Created with IntelliJ IDEA.
@@ -19,10 +21,13 @@ import static main.java.repository.jdbc.DAOJDBCUtil.close;
  * Time: 19:32
  * To change this template use File | Settings | File Templates.
  */
+
+@Repository("sexRepository")
 public class SexDAOJDBC implements SexDAO {
 
     private ConnectionFactory cnFactory;
 
+    @Autowired
     public SexDAOJDBC(ConnectionFactory connection) {
         this.cnFactory = connection;
     }

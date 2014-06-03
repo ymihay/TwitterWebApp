@@ -1,4 +1,4 @@
-package main.java.repository.jdbc;
+package repository.jdbc;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -13,6 +13,7 @@ import java.util.concurrent.Semaphore;
  * Time: 22:17
  * To change this template use File | Settings | File Templates.
  */
+//@Component
 public class DriverManagerDAOJDBC implements ConnectionFactory {
     private static final Locale defaultLocale = Locale.ENGLISH;
 

@@ -1,4 +1,4 @@
-package main.java.web.usermanager;
+package web.usermanager;
 
 /**
  * Created by Admin on 25.05.2014.

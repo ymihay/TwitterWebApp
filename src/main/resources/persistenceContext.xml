@@ -7,12 +7,13 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans
 http://www.springframework.org/schema/beans/spring-beans.xsd
 http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+    <context:component-scan base-package="*"/>
 
     <bean id="propertyConfigurer"
           class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer"
-          p:location="main/resources/jdbc.properties"/>
+          p:location="jdbc.properties"/>
 
-    <bean name="driverManagerDAO" class="main.java.repository.jdbc.DriverManagerDAOJDBC"
+    <bean name="driverManagerDAO" class="repository.jdbc.DriverManagerDAOJDBC"
           p:driver="${driver}"
           p:url="jdbc:${url}"
           p:user="${user}"
@@ -20,21 +21,4 @@ http://www.springframework.org/schema/context http://www.springframework.org/sch
           p:poolSize="${poolSize}"
           init-method="createConnectionPool" destroy-method="closeAllConnections"
             />
-
-    <bean name="countryDAO" class="main.java.repository.country.CountryDAOJDBC">
-        <constructor-arg ref="driverManagerDAO"/>
-    </bean>
-
-    <bean name="postDAO" class="main.java.repository.post.PostDAOJDBC">
-        <constructor-arg ref="driverManagerDAO"/>
-    </bean>
-
-    <bean name="sexDAO" class="main.java.repository.sex.SexDAOJDBC">
-        <constructor-arg ref="driverManagerDAO"/>
-    </bean>
-
-    <bean name="userDAO" class="main.java.repository.user.UserDAOJDBC">
-        <constructor-arg ref="driverManagerDAO"/>
-    </bean>
-
 </beans>
