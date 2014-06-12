@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import service.post.PostService;
 import web.usermanager.UserManager;
 
+import java.util.List;
+
 /**
  * Created by Admin on 02.06.2014.
  */
@@ -23,6 +25,7 @@ public class PostController {
 
     private static String viewPostsTemplate = "post/viewposts";
     private static String modifyPostTemplate = "post/modifypost";
+    private static String viewNoHitsTemplate = "search/nohits";
 
     @ExceptionHandler(Exception.class)
     public String handleExceptions(Exception exception) {
@@ -68,5 +71,15 @@ public class PostController {
             model.addAttribute("isLoggedUser", true);
         }
         return viewPostsTemplate;
+    }
+
+    @RequestMapping(value = "/findpost",params = "phrase")
+    public String findPost(Model model, @RequestParam("phrase") String phrase) {
+        List<Post> posts = postService.findByPhrase(phrase);
+        if (!posts.isEmpty()) {
+            model.addAttribute("posts", postService.findByPhrase(phrase));
+            return viewPostsTemplate;
+        }
+        return viewNoHitsTemplate;
     }
 }

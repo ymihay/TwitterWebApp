@@ -66,6 +66,21 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    public boolean setSubscription(Integer userId, Integer userSubscribedOnId) {
+        return repository.setSubscription(userId, userSubscribedOnId);
+    }
+
+    @Override
+    public boolean unSetSubscription(Integer userId, Integer userSubscribedOnId) {
+        return repository.unSetSubscription(userId, userSubscribedOnId);
+    }
+
+    @Override
+    public boolean isFollowingForUser(Integer userId, Integer followingUserId) {
+        return repository.isFollowingForUser(userId, followingUserId);
+    }
+
+    @Override
     public boolean create(User user) {
         return repository.create(user);
     }

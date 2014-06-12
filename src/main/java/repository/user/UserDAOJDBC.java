@@ -94,6 +94,12 @@ public class UserDAOJDBC implements UserDAO {
             " where u.sys_delstate = 0" +
             "   and su.id = ?";
 
+    private static final String isSubscribedOnUserByIdSQL = "select s.id\n" +
+            "  from twt_subscription s\n" +
+            " where s.sys_delstate = 0\n" +
+            "   and s.user_id = ?\n" +
+            "   and s.subscribed_on_user_id = ?\n";
+
     private static final String findSubscriptionsByIdSQL = "select distinct u.*, " +
             " c.name as country_name, s.name as sex_name " +
             "  from twt_subscription s" +
@@ -120,6 +126,11 @@ public class UserDAOJDBC implements UserDAO {
             "     where s.sys_delstate = 0" +
             "       and s.login like ?))";
 
+
+    private static final String setSubscriptionByIdSQL = "INSERT INTO twt_subscription " +
+            "  (USER_ID, SUBSCRIBED_ON_USER_ID)" +
+            "VALUES  (?,?)";
+
     private static final String unSetSubscriptionSQL = "update twt_subscription sb" +
             "   set sb.sys_delstate = 1" +
             " where sb.user_id = (select u.id" +
@@ -131,6 +142,12 @@ public class UserDAOJDBC implements UserDAO {
             "          from twt_user s" +
             "         where s.sys_delstate = 0" +
             "           and s.login like ?)";
+
+    private static final String unSetSubscriptionByIdSQL = "update twt_subscription sb" +
+            "   set sb.sys_delstate = 1" +
+            " where sb.user_id = ?" +
+            "   and sb.subscribed_on_user_id = ?";
+
 
     private static final String createUserSQL = "insert into twt_user \n" +
             "  (first_name,\n" +
@@ -364,6 +381,31 @@ public class UserDAOJDBC implements UserDAO {
     }
 
     @Override
+    public boolean isFollowingForUser(Integer userId, Integer followingUserId) {
+        Connection connection = null;
+        PreparedStatement preparedStatement = null;
+        ResultSet resultSet = null;
+
+        try {
+            connection = cnFactory.getConnection();
+            preparedStatement = connection.prepareStatement(isSubscribedOnUserByIdSQL);
+            preparedStatement.setInt(1, userId);
+            preparedStatement.setInt(2, followingUserId);
+            resultSet = preparedStatement.executeQuery();
+            if (resultSet.next()) {
+                return true;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            close(resultSet);
+            close(preparedStatement);
+            cnFactory.closeConnection(connection);
+        }
+        return false;
+    }
+
+    @Override
     public boolean setSubscription(String login, String loginSubscribedOn) {
         Connection connection = null;
         PreparedStatement preparedStatement = null;
@@ -392,6 +434,45 @@ public class UserDAOJDBC implements UserDAO {
             preparedStatement = connection.prepareStatement(unSetSubscriptionSQL);
             preparedStatement.setString(1, login);
             preparedStatement.setString(2, loginSubscribedOn);
+            return preparedStatement.execute();
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        } finally {
+            close(preparedStatement);
+            cnFactory.closeConnection(connection);
+        }
+        return true;
+    }
+
+    @Override
+    public boolean setSubscription(Integer userId, Integer userSubscribedOnId) {
+        Connection connection = null;
+        PreparedStatement preparedStatement = null;
+
+        try {
+            connection = cnFactory.getConnection();
+            preparedStatement = connection.prepareStatement(setSubscriptionByIdSQL);
+            preparedStatement.setInt(1, userId);
+            preparedStatement.setInt(2, userSubscribedOnId);
+            return preparedStatement.execute();
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        } finally {
+            close(preparedStatement);
+            cnFactory.closeConnection(connection);
+        }
+        return true;
+    }
+
+    @Override
+    public boolean unSetSubscription(Integer userId, Integer userSubscribedOnId) {
+        Connection connection = null;
+        PreparedStatement preparedStatement = null;
+        try {
+            connection = cnFactory.getConnection();
+            preparedStatement = connection.prepareStatement(unSetSubscriptionByIdSQL);
+            preparedStatement.setInt(1, userId);
+            preparedStatement.setInt(2, userSubscribedOnId);
             return preparedStatement.execute();
         } catch (Exception ex) {
             ex.printStackTrace();

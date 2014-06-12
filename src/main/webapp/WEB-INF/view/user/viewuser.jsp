@@ -34,11 +34,18 @@
     </tr>
 </table>
 
+
 <ul>
     <li><a href="/pages/viewuserposts?userid=${user.userId}">List of tweets</a></li>
     <li><a href="/pages/viewfollowingusers?userid=${user.userId}">List of following users</a></li>
     <li><a href="/pages/viewfollowers?userid=${user.userId}">List of followers</a></li>
     <li><a href="/pages/viewfollowingposts?userid=${user.userId}">List of following posts</a></li>
+    <c:if test="${(isFollowing != null) && (!isFollowing)}">
+        <li><a href="/pages/setsubscription?userid=${user.userId}">Follow</a></li>
+    </c:if>
+    <c:if test="${(isFollowing != null) && (isFollowing)}">
+        <li><a href="/pages/unsetsubscription?userid=${user.userId}">Stop follow</a></li>
+    </c:if>
 </ul>
 
 <jsp:include page="/WEB-INF/view/footer/footer.jsp"></jsp:include>

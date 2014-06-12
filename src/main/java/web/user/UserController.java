@@ -1,5 +1,6 @@
 package web.user;
 
+import domain.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -32,6 +33,7 @@ public class UserController {
     private static String registerTemplate = "user/modifyuser";
     private static String viewAllUsersTemplate = "user/viewusers";
     private static String viewUserTemplate = "user/viewuser";
+    private static String viewNoHitsTemplate = "search/nohits";
 
     @ExceptionHandler(Exception.class)
     public String handleExceptions(Exception exception) {
@@ -46,14 +48,25 @@ public class UserController {
         return viewAllUsersTemplate;
     }
 
-    @RequestMapping(value = "/viewuser",
-            params = "userid")
-    public String viewUser(Model model,
-                              @RequestParam("userid") Integer id) {
-        model.addAttribute("user", userService.findById(id));
-        if (userManager.getUser().getUserId().compareTo(id) == 0){
+    public void initModelForAvailableInteractions(Model model, Integer userId) {
+        Integer loggedUserId = userManager.getUser().getUserId();
+        if (loggedUserId.compareTo(userId) == 0) {
             model.addAttribute("isLoggedUser", true);
+            model.addAttribute("isFollowing", null);
+        } else {
+            if (userService.isFollowingForUser(loggedUserId, userId)) {
+                model.addAttribute("isFollowing", true);
+            } else {
+                model.addAttribute("isFollowing", false);
+            }
+
         }
+    }
+
+    @RequestMapping(value = "/viewuser",params = "userid")
+    public String viewUser(Model model,@RequestParam("userid") Integer userId) {
+        initModelForAvailableInteractions(model, userId);
+        model.addAttribute("user", userService.findById(userId));
         return viewUserTemplate;
     }
 
@@ -91,4 +104,14 @@ public class UserController {
         return registerTemplate;
     }
 
+    @RequestMapping(value = "/finduser", params = "login")
+    public String viewUser(Model model, @RequestParam("login") String login) {
+        User user = userService.findByLogin(login);
+        if (user != null) {
+            initModelForAvailableInteractions(model, user.getUserId());
+            model.addAttribute("user", user);
+            return viewUserTemplate;
+        }
+        return viewNoHitsTemplate;
+    }
 }

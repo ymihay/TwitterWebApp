@@ -30,9 +30,15 @@ public interface UserDAO {
 
     public List<User> findSubscriptions(Integer id);
 
+    public boolean isFollowingForUser(Integer userId, Integer followingUserId);
+
     public boolean setSubscription(String login, String loginSubscribedOn);
 
     public boolean unSetSubscription(String login, String loginSubscribedOn);
+
+    public boolean setSubscription(Integer userId, Integer userSubscribedOnId);
+
+    public boolean unSetSubscription(Integer userId, Integer userSubscribedOnId);
 
     public boolean create(User user);
 

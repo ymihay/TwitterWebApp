@@ -26,6 +26,12 @@ public interface UserService {
 
     public boolean unSetSubscription(String login, String loginSubscribedOn);
 
+    public boolean setSubscription(Integer userId, Integer userSubscribedOnId);
+
+    public boolean unSetSubscription(Integer userId, Integer userSubscribedOnId);
+
+    public boolean isFollowingForUser(Integer userId, Integer followingUserId);
+
     public boolean create(User user);
 
     public boolean update(User user);
