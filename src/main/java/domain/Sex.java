@@ -16,8 +16,8 @@ public class Sex {
         this.sexName = sexName;
     }
 
-    public Sex(String sexName) {
-        this.sexName = sexName;
+    public Sex(Integer sexId) {
+        this.sexId = sexId;
     }
 
     public String getSexName() {
@@ -52,10 +52,5 @@ public class Sex {
         }
 
         return true;
-    }
-
-    @Override
-    public int hashCode() {
-        return sexName.hashCode();
     }
 }

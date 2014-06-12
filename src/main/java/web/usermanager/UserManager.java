@@ -1,14 +1,16 @@
 package web.usermanager;
 
+import domain.User;
+
 /**
  * Created by Admin on 25.05.2014.
  */
 public interface UserManager {
-    String getUser();
+    User getUser();
 
     boolean isLoggedIn();
 
-    void login(String user);
+    boolean login(String login, String password);
 
     void logout();
 }

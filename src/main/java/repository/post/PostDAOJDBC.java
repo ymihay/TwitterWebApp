@@ -25,7 +25,7 @@ import static repository.jdbc.DAOJDBCUtil.close;
  * To change this template use File | Settings | File Templates.
  */
 
-@Repository("postRepository")
+@Repository("postDAO")
 public class PostDAOJDBC implements PostDAO {
 
     private static final String findByPhraseSQL = "select p.id      as post_id,\n" +
@@ -44,6 +44,25 @@ public class PostDAOJDBC implements PostDAO {
             "  left join twt_country c on (c.sys_delstate = 0 and c.id = u.country_id) " +
             " where p.sys_delstate = 0\n" +
             "   and p.text like '%' || ? || '%'\n" +
+            " order by p.sys_last_modified desc\n";
+
+    private static final String findByIdSQL = "select p.id as post_id,       \n" +
+            "       p.user_id,\n" +
+            "       p.text,\n" +
+            "       u.*,\n" +
+            "       s.id      as sex_id,\n" +
+            "       s.name    as sex_name,\n" +
+            "       c.id      as country_id,\n" +
+            "       c.name    as country_name\n" +
+            "  from twt_post p\n" +
+            "  left join twt_user u\n" +
+            "    on (u.sys_delstate = 0 and u.id = p.user_id)\n" +
+            "  left join twt_sex s\n" +
+            "    on (s.sys_delstate = 0 and s.id = u.sex_id)\n" +
+            "  left join twt_country c\n" +
+            "    on (c.sys_delstate = 0 and c.id = u.country_id)\n" +
+            " where p.sys_delstate = 0\n" +
+            "   and p.id = ?\n" +
             " order by p.sys_last_modified desc\n";
 
     private static final String findByUserLoginSQL = "select p.id      as post_id,\n" +
@@ -181,6 +200,32 @@ public class PostDAOJDBC implements PostDAO {
     public void setCnFactory(ConnectionFactory cnFactory) {
         this.cnFactory = cnFactory;
     }
+
+    @Override
+    public Post findById(Integer postId) {
+        Connection connection = null;
+        PreparedStatement preparedStatement = null;
+        ResultSet resultSet = null;
+        Post post = new Post();
+
+        try {
+            connection = cnFactory.getConnection();
+            preparedStatement = connection.prepareStatement(findByIdSQL);
+            preparedStatement.setInt(1, postId);
+            resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()) {
+                post = map(resultSet);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            close(resultSet);
+            close(preparedStatement);
+            cnFactory.closeConnection(connection);
+        }
+        return post;
+    }
+
 
     private Post map(ResultSet resultSet) throws SQLException {
         Post post = new Post();
@@ -367,7 +412,7 @@ public class PostDAOJDBC implements PostDAO {
             close(preparedStatement);
             cnFactory.closeConnection(connection);
         }
-        return false;
+        return true;
     }
 
     @Override
@@ -388,7 +433,7 @@ public class PostDAOJDBC implements PostDAO {
             close(preparedStatement);
             cnFactory.closeConnection(connection);
         }
-        return false;
+        return true;
     }
 
     @Override
@@ -406,6 +451,6 @@ public class PostDAOJDBC implements PostDAO {
             close(preparedStatement);
             cnFactory.closeConnection(connection);
         }
-        return false;
+        return true;
     }
 }

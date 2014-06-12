@@ -46,6 +46,16 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    public List<User> findSubscribedOnUser(Integer id) {
+        return repository.findSubscribedOnUser(id);
+    }
+
+    @Override
+    public List<User> findSubscriptions(Integer id) {
+        return repository.findSubscriptions(id);
+    }
+
+    @Override
     public boolean setSubscription(String login, String loginSubscribedOn) {
         return repository.setSubscription(login, loginSubscribedOn);
     }

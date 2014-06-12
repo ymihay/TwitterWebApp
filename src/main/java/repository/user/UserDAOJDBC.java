@@ -80,6 +80,34 @@ public class UserDAOJDBC implements UserDAO {
             " where s.sys_delstate = 0" +
             "   and su.login = ?";
 
+    private static final String findSubscribedOnUserByIdSQL = "select distinct u.*, " +
+            " c.name as country_name, s.name as sex_name " +
+            "  from TWT_USER u" +
+            "  join twt_subscription s" +
+            "    on (s.user_id = u.id and s.sys_delstate = 0)" +
+            "  left join twt_user su" +
+            "    on (su.id = s.subscribed_on_user_id and su.sys_delstate = 0)" +
+            "  left join twt_country c\n" +
+            "    on (c.sys_delstate = 0 and c.id = u.country_id)\n" +
+            "  left join twt_sex s\n" +
+            "    on (s.sys_delstate = 0 and s.id = u.sex_id)\n" +
+            " where u.sys_delstate = 0" +
+            "   and su.id = ?";
+
+    private static final String findSubscriptionsByIdSQL = "select distinct u.*, " +
+            " c.name as country_name, s.name as sex_name " +
+            "  from twt_subscription s" +
+            "  join twt_user u" +
+            "    on (u.sys_delstate = 0 and u.id = s.subscribed_on_user_id)" +
+            "  join twt_user su" +
+            "    on (su.sys_delstate = 0 and su.id = s.user_id)" +
+            "  left join twt_country c\n" +
+            "    on (c.sys_delstate = 0 and c.id = u.country_id)\n" +
+            "  left join twt_sex s\n" +
+            "    on (s.sys_delstate = 0 and s.id = u.sex_id)\n" +
+            " where s.sys_delstate = 0" +
+            "   and su.id = ?";
+
     private static final String setSubscriptionSQL = "INSERT INTO twt_subscription " +
             "  (USER_ID, SUBSCRIBED_ON_USER_ID)" +
             "VALUES" +
@@ -286,6 +314,56 @@ public class UserDAOJDBC implements UserDAO {
     }
 
     @Override
+    public List<User> findSubscribedOnUser(Integer userId) {
+        Connection connection = null;
+        PreparedStatement preparedStatement = null;
+        ResultSet resultSet = null;
+        List<User> users = new ArrayList<User>();
+
+        try {
+            connection = cnFactory.getConnection();
+            preparedStatement = connection.prepareStatement(findSubscribedOnUserByIdSQL);
+            preparedStatement.setInt(1, userId);
+            resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()) {
+                users.add(map(resultSet));
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            close(resultSet);
+            close(preparedStatement);
+            cnFactory.closeConnection(connection);
+        }
+        return users;
+    }
+
+    @Override
+    public List<User> findSubscriptions(Integer userId) {
+        Connection connection = null;
+        PreparedStatement preparedStatement = null;
+        ResultSet resultSet = null;
+        List<User> users = new ArrayList<User>();
+
+        try {
+            connection = cnFactory.getConnection();
+            preparedStatement = connection.prepareStatement(findSubscriptionsByIdSQL);
+            preparedStatement.setInt(1, userId);
+            resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()) {
+                users.add(map(resultSet));
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            close(resultSet);
+            close(preparedStatement);
+            cnFactory.closeConnection(connection);
+        }
+        return users;
+    }
+
+    @Override
     public boolean setSubscription(String login, String loginSubscribedOn) {
         Connection connection = null;
         PreparedStatement preparedStatement = null;
@@ -302,7 +380,7 @@ public class UserDAOJDBC implements UserDAO {
             close(preparedStatement);
             cnFactory.closeConnection(connection);
         }
-        return false;
+        return true;
     }
 
     @Override
@@ -321,7 +399,7 @@ public class UserDAOJDBC implements UserDAO {
             close(preparedStatement);
             cnFactory.closeConnection(connection);
         }
-        return false;
+        return true;
     }
 
 
@@ -337,18 +415,17 @@ public class UserDAOJDBC implements UserDAO {
             preparedStatement.setString(3, user.getLastName());
             preparedStatement.setString(4, user.getLogin());
             preparedStatement.setString(5, user.getPassword());
-            if (user.getSex() == null) {
+            if ((user.getSex() == null) || (user.getSex().getSexId() == null)) {
                 preparedStatement.setNull(6, Types.INTEGER);
             } else {
                 preparedStatement.setInt(6, user.getSex().getSexId());
             }
-            if (user.getCountry() == null) {
+            if ((user.getCountry() == null) || (user.getCountry().getCountryId() == null)) {
                 preparedStatement.setNull(7, Types.INTEGER);
             } else {
                 preparedStatement.setInt(7, user.getCountry().getCountryId());
             }
             preparedStatement.setTimestamp(8, user.getBirthdate());
-
             return preparedStatement.execute();
         } catch (Exception ex) {
             ex.printStackTrace();
@@ -356,7 +433,7 @@ public class UserDAOJDBC implements UserDAO {
             close(preparedStatement);
             cnFactory.closeConnection(connection);
         }
-        return false;
+        return true;
     }
 
     @Override
@@ -383,7 +460,7 @@ public class UserDAOJDBC implements UserDAO {
             close(preparedStatement);
             cnFactory.closeConnection(connection);
         }
-        return false;
+        return true;
     }
 
     @Override
@@ -401,6 +478,6 @@ public class UserDAOJDBC implements UserDAO {
             close(preparedStatement);
             cnFactory.closeConnection(connection);
         }
-        return false;
+        return true;
     }
 }

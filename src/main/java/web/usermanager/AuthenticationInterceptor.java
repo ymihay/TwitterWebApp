@@ -16,19 +16,18 @@ public class AuthenticationInterceptor extends HandlerInterceptorAdapter {
 
     @Autowired
     private UserManager userManager;
+    private static final String loginRedirect = "login";
+    private static final String registerTemplate = "register";
+    private static final String addUserTemplate = "adduser";
 
     @Override
     public boolean preHandle(HttpServletRequest request,
                              HttpServletResponse response, Object handler) throws Exception {
         String uri = request.getRequestURI();
-        //System.out.println(uri);
-
-        if (!userManager.isLoggedIn()) {
-            response.sendRedirect("loginpage");
+        if (!userManager.isLoggedIn() && !uri.endsWith(registerTemplate) && !uri.endsWith(addUserTemplate)) {
+            response.sendRedirect(loginRedirect);
             return false;
         }
-        //System.out.println(userManager.getUser());
-
         return true;
     }
 }

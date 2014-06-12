@@ -13,6 +13,11 @@ public class Post {
     private User user;
 
     public Post() {
+
+    }
+
+    public Post(Integer postId) {
+        this.postId = postId;
     }
 
     public Post(Integer postId, String postMessage, User user) {

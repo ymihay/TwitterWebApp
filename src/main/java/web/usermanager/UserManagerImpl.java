@@ -1,8 +1,11 @@
 package web.usermanager;
 
+import domain.User;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.context.annotation.ScopedProxyMode;
 import org.springframework.stereotype.Component;
+import service.user.UserService;
 
 /**
  * Created by Admin on 01.06.2014.
@@ -10,11 +13,14 @@ import org.springframework.stereotype.Component;
 @Component("userManager")
 @Scope(value = "session", proxyMode = ScopedProxyMode.INTERFACES)
 public class UserManagerImpl implements UserManager {
-    private String user;
+    private User user;
     private boolean loggedIn;
 
+    @Autowired
+    private UserService userService;
+
     @Override
-    public String getUser() {
+    public User getUser() {
         return user;
     }
 
@@ -24,9 +30,13 @@ public class UserManagerImpl implements UserManager {
     }
 
     @Override
-    public void login(String user) {
-        this.user = user;
+    public boolean login(String login, String password) {
+        this.user = userService.findByLogin(login);
+        if ((this.user == null) || (this.user.getPassword().compareTo(password) != 0)) {
+           return false;
+        }
         loggedIn = true;
+        return true;
     }
 
     @Override
@@ -34,4 +44,5 @@ public class UserManagerImpl implements UserManager {
         this.user = null;
         loggedIn = false;
     }
+
 }

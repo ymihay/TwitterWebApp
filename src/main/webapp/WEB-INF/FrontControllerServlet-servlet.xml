@@ -18,6 +18,16 @@ http://www.springframework.org/schema/mvc/spring-mvc.xsd">
     <context:component-scan base-package="service"/>
     <context:annotation-config/>
 
+    <mvc:interceptors>
+        <mvc:interceptor>
+            <mvc:mapping path="/*"/>
+            <mvc:exclude-mapping path="/rest"/>
+            <mvc:exclude-mapping path="/login*"/>
+            <mvc:exclude-mapping path="/logout"/>
+            <bean class="web.usermanager.AuthenticationInterceptor"/>
+        </mvc:interceptor>
+    </mvc:interceptors>
+
     <!--  <bean class="org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter" >
           <property name="messageConverters">
               <list>

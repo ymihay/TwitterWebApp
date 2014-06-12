@@ -173,7 +173,7 @@ public class SexDAOJDBC implements SexDAO {
             close(preparedStatement);
             cnFactory.closeConnection(connection);
         }
-        return false;
+        return true;
     }
 
     @Override
@@ -191,6 +191,6 @@ public class SexDAOJDBC implements SexDAO {
             close(preparedStatement);
             cnFactory.closeConnection(connection);
         }
-        return false;
+        return true;
     }
 }

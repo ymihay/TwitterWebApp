@@ -11,8 +11,8 @@ public class Country {
     private Integer countryId;
     private String countryName;
 
-    public Country(String countryName) {
-        this.countryName = countryName;
+    public Country(Integer countryId) {
+        this.countryId = countryId;
     }
 
     public Country(Integer countryId, String countryName) {
@@ -52,10 +52,5 @@ public class Country {
         }
 
         return true;
-    }
-
-    @Override
-    public int hashCode() {
-        return countryName.hashCode();
     }
 }

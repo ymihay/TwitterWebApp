@@ -151,7 +151,7 @@ public class CountryDAOJDBC implements CountryDAO {
             close(preparedStatement);
             cnFactory.closeConnection(connection);
         }
-        return false;
+        return true;
     }
 
     @Override
@@ -171,7 +171,7 @@ public class CountryDAOJDBC implements CountryDAO {
             close(preparedStatement);
             cnFactory.closeConnection(connection);
         }
-        return false;
+        return true;
     }
 
     @Override
@@ -189,6 +189,6 @@ public class CountryDAOJDBC implements CountryDAO {
             close(preparedStatement);
             cnFactory.closeConnection(connection);
         }
-        return false;
+        return true;
     }
 }

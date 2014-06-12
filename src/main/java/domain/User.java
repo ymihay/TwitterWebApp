@@ -24,6 +24,14 @@ public class User {
     private List<User> subscribedOnUserList;
     private List<Post> postList;
 
+    public User(){
+
+    }
+
+    public User(Integer userId){
+        this.userId = userId;
+    }
+
     public User(String login, String password) {
         this.login = login;
         this.password = password;
@@ -135,6 +143,10 @@ public class User {
         }
 
         User user = (User) o;
+
+        if(userId.equals(user.getUserId())) {
+            return true;
+        }
 
         if (!login.equals(user.login)) {
             return false;

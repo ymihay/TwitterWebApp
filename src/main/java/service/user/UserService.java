@@ -18,6 +18,10 @@ public interface UserService {
 
     public List<User> findSubscriptions(String login);
 
+    public List<User> findSubscribedOnUser(Integer id);
+
+    public List<User> findSubscriptions(Integer id);
+
     public boolean setSubscription(String login, String loginSubscribedOn);
 
     public boolean unSetSubscription(String login, String loginSubscribedOn);
