@@ -1,5 +1,7 @@
 package web.user;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -13,7 +15,7 @@ import web.usermanager.UserManager;
  * Created by Admin on 12.06.2014.
  */
 @Controller
-public class UserSubscription {
+public class UserSubscriptionCommandsController {
 
     @Autowired
     private UserService userService;
@@ -21,17 +23,17 @@ public class UserSubscription {
     @Autowired
     private UserManager userManager;
 
-    private static final String errorTemplate = "error/error";
+    private static Logger LOG = LoggerFactory.getLogger(UserSubscriptionCommandsController.class);
     private static final String viewUserRedirect = "redirect:viewuser";
 
     @ExceptionHandler(Exception.class)
-    public String handleExceptions(Exception exception) {
-        exception.printStackTrace();
-        return errorTemplate;
+    public void handleExceptions(Exception exception) {
+        LOG.error(exception.getStackTrace().toString());
     }
 
     @RequestMapping(value = "/setsubscription", params = "userid")
-    public String setSubscription(Model model, @RequestParam("userid") Integer userSubscribedOnId) {
+    private String setSubscription(Model model, @RequestParam("userid") Integer userSubscribedOnId) {
+        // TODO: add check that set subscription for authorized user
         userService.setSubscription(userManager.getUser().getUserId(), userSubscribedOnId);
         model.addAttribute("userid", userSubscribedOnId);
         return viewUserRedirect;
@@ -39,6 +41,7 @@ public class UserSubscription {
 
     @RequestMapping(value = "/unsetsubscription", params = "userid")
     public String unSetSubscription(Model model, @RequestParam("userid") Integer userSubscribedOnId) {
+        // TODO: add check that unset subscription for authorized user
         userService.unSetSubscription(userManager.getUser().getUserId(), userSubscribedOnId);
         model.addAttribute("userid", userSubscribedOnId);
         return viewUserRedirect;

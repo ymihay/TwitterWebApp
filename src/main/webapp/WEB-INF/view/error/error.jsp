@@ -12,6 +12,8 @@
 </head>
 <body>
 <h1>Ooops! An error occured</h1>
-${errorMessage}
+Exception: ${pageContext.exception.message} <br/>
+Servlet: ${pageContext.errorData.servletName}<br/>
+URI: ${pageContext.errorData.requestURI}<br/>
 </body>
 </html>

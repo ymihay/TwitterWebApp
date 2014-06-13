@@ -4,6 +4,8 @@ package web.usermanager;
  * Created by Admin on 25.05.2014.
  */
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
@@ -16,6 +18,8 @@ public class AuthenticationInterceptor extends HandlerInterceptorAdapter {
 
     @Autowired
     private UserManager userManager;
+
+    private static Logger LOG = LoggerFactory.getLogger(AuthenticationInterceptor.class);
     private static final String loginRedirect = "login";
     private static final String registerTemplate = "register";
     private static final String addUserTemplate = "adduser";

@@ -1,6 +1,8 @@
 package web.usermanager;
 
 import domain.User;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.context.annotation.ScopedProxyMode;
@@ -13,6 +15,9 @@ import service.user.UserService;
 @Component("userManager")
 @Scope(value = "session", proxyMode = ScopedProxyMode.INTERFACES)
 public class UserManagerImpl implements UserManager {
+
+    private static Logger LOG = LoggerFactory.getLogger(UserManagerImpl.class);
+
     private User user;
     private boolean loggedIn;
 

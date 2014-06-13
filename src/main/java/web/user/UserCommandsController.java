@@ -3,6 +3,8 @@ package web.user;
 import domain.Country;
 import domain.Sex;
 import domain.User;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -13,7 +15,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import service.user.UserService;
 import web.usermanager.UserManager;
 
-import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import java.sql.Timestamp;
 
 
@@ -22,32 +24,30 @@ import java.sql.Timestamp;
  */
 
 @Controller
-public class ModifyUserController {
-    @Autowired
-    private UserService userService;
+public class UserCommandsController {
 
-    @Autowired
+    private UserService userService;
     private UserManager userManager;
 
-    private static final String errorTemplate = "error/error";
+    private static Logger LOG = LoggerFactory.getLogger(UserCommandsController.class);
     private static final String viewAllUsersRedirect = "redirect:viewall";
     private static final String viewUserRedirect = "redirect:viewuser";
     private static final String modifyUserRedirect = "redirect:modifyuser";
     private static final String logoutReirect = "redirect:logout";
-
-    @ExceptionHandler(Exception.class)
-    public String handleExceptions(Exception exception) {
-        exception.printStackTrace();
-        return errorTemplate;
-    }
+    private static final String registerTemplate = "user/modifyuser";
 
     @Autowired
-    public ModifyUserController(UserService userService) {
+    public UserCommandsController(UserService userService, UserManager userManager) {
         this.userService = userService;
     }
 
+    @ExceptionHandler(Exception.class)
+    public void handleExceptions(Exception exception) {
+        LOG.error(exception.getStackTrace().toString());
+    }
+
     @ModelAttribute
-    private User createUser(
+    private User getUserModel(
             @RequestParam(required = false) String firstName,
             @RequestParam(required = false) String patronymic,
             @RequestParam(required = false) String lastName,
@@ -66,8 +66,14 @@ public class ModifyUserController {
         return user;
     }
 
+    @RequestMapping("/register")
+    public String registerUser(Model model) {
+        model.addAttribute("action", "adduser");
+        return registerTemplate;
+    }
+
     @RequestMapping(value = "/adduser")
-    public String addUser(@ModelAttribute User user, Model model) {
+    private String addUser(@ModelAttribute User user, Model model) {
         if ((user.getLogin() == null) || (user.getPassword() == null)) {
             model.addAttribute("errorMessage", "Please, fill login and password");
             return modifyUserRedirect;
@@ -80,8 +86,16 @@ public class ModifyUserController {
         return viewAllUsersRedirect;
     }
 
+    @RequestMapping("/modifyuser")
+    private String modifyUser(Model model) {
+        //initUserDictionaries(model);
+        model.addAttribute("user", userManager.getUser());
+        model.addAttribute("action", "updateuser");
+        return registerTemplate;
+    }
+
     @RequestMapping(value = "/updateuser")
-    public String updateUser(@ModelAttribute User user, Model model, HttpServletRequest request) {
+    private String updateUser(@ModelAttribute User user, Model model, HttpSession session) {
         model.addAttribute("userid", userManager.getUser().getUserId());
         //set non-updatable values
         user.setUserId(userManager.getUser().getUserId());
@@ -89,13 +103,13 @@ public class ModifyUserController {
         userService.update(user);
         // update info in User manager via relogin
         if (userManager.login(user.getLogin(), user.getPassword())) {
-            request.getSession().setAttribute("loggedUserId", userManager.getUser().getUserId());
+            session.setAttribute("loggedUserId", userManager.getUser().getUserId());
         }
         return viewUserRedirect;
     }
 
     @RequestMapping(value = "/removeuser")
-    public String deleteUser(Model model) {
+    private String deleteUser() {
         userService.delete(userManager.getUser());
         return logoutReirect;
     }

@@ -1,6 +1,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" errorPage="/WEB-INF/view/error/error.jsp" %>
 <ul>
-    <c:forEach begin="0" end="${(itemsCount % 10 == 0) ? (itemsCount / 10 - 1) : (itemsCount / 10)}"
+    <c:forEach begin="0" end="${((itemsCount % 10 == 0) && (itemsCount > 0)) ? (itemsCount / 10 - 1) : (itemsCount / 10)}"
                var="pageNum" varStatus="status">
         <c:set value="${(pageNum * 10 + 1)}" var="begin"></c:set>
         <c:choose>

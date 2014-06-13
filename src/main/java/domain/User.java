@@ -24,9 +24,7 @@ public class User {
     private List<User> subscribedOnUserList;
     private List<Post> postList;
 
-    public User(){
-
-    }
+    public User(){ }
 
     public User(Integer userId){
         this.userId = userId;
