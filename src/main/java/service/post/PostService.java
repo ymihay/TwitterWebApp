@@ -14,9 +14,17 @@ public interface PostService {
 
     public List<Post> findByUser(Integer userId);
 
+    public Integer userPostCount(Integer userID);
+
+    public List<Post> findByUserPagination(Integer userId, Integer startPos, Integer endPos);
+
     public List<Post> findAvailablePosts(String login);
 
     public List<Post> findAvailablePosts(Integer userId);
+
+    public Integer availablePostCount(Integer userID);
+
+    public List<Post> findAvailablePostsPagination(Integer userId, Integer startPos, Integer endPos);
 
     public List<Post> findAll();
 

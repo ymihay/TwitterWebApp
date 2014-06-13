@@ -33,14 +33,16 @@ public class PostController {
         return "Error";
     }
 
-    @RequestMapping(value = "/viewuserposts",
-            params = "userid")
-    public String viewUserPosts(Model model,
-                                @RequestParam("userid") Integer id) {
-        model.addAttribute("posts", postService.findByUser(id));
-        if (userManager.getUser().getUserId().compareTo(id) == 0){
+    @RequestMapping(value = "/viewuserposts", params = {"userid", "end", "start"})
+    public String viewUserPosts(Model model, @RequestParam("userid") Integer userId,
+                                            @RequestParam("start") Integer start,
+                                            @RequestParam("end") Integer end) {
+        model.addAttribute("posts", postService.findByUserPagination(userId, start, end));
+        if (userManager.getUser().getUserId().compareTo(userId) == 0){
             model.addAttribute("isLoggedUser", true);
         }
+        model.addAttribute("destinationURL", "/pages/viewuserposts?userid=" + userId.toString());
+        model.addAttribute("itemsCount", postService.userPostCount(userId));
         return viewPostsTemplate;
     }
 
@@ -63,13 +65,17 @@ public class PostController {
         return modifyPostTemplate;
     }
 
-    @RequestMapping(value = "/viewfollowingposts",
-            params = "userid")
-    public String followingPost(Model model, @RequestParam("userid") Integer userId) {
-        model.addAttribute("posts", postService.findAvailablePosts(userId));
+    @RequestMapping(value = "/viewfollowingposts", params = {"userid", "end", "start"})
+    public String followingPost(Model model, @RequestParam("userid") Integer userId,
+                                @RequestParam("start") Integer start,
+                                @RequestParam("end") Integer end) {
+        model.addAttribute("posts", postService.findAvailablePostsPagination(userId, start, end));
         if (userManager.getUser().getUserId().compareTo(userId) == 0){
             model.addAttribute("isLoggedUser", true);
         }
+        model.addAttribute("destinationURL", "/pages/viewfollowingposts?userid=" + userId.toString());
+        model.addAttribute("itemsCount", postService.availablePostCount(userId));
+
         return viewPostsTemplate;
     }
 

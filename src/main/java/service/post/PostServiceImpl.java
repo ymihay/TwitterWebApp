@@ -36,6 +36,19 @@ public class PostServiceImpl implements PostService {
     }
 
     @Override
+    public Integer userPostCount(Integer userID) {
+        return repository.userPostCount(userID);
+    }
+
+    @Override
+    public List<Post> findByUserPagination(Integer userId, Integer startPos, Integer endPos) {
+        if (endPos >= startPos) {
+            return repository.findByUserPagination(userId, startPos, endPos);
+        }
+        return null;
+    }
+
+    @Override
     public List<Post> findAvailablePosts(String login) {
         return repository.findAvailablePosts(login);
     }
@@ -43,6 +56,19 @@ public class PostServiceImpl implements PostService {
     @Override
     public List<Post> findAvailablePosts(Integer userId) {
         return repository.findAvailablePosts(userId);
+    }
+
+    @Override
+    public Integer availablePostCount(Integer userID) {
+        return repository.availablePostCount(userID);
+    }
+
+    @Override
+    public List<Post> findAvailablePostsPagination(Integer userId, Integer startPos, Integer endPos) {
+        if (endPos >= startPos) {
+            return repository.findAvailablePostsPagination(userId, startPos, endPos);
+        }
+        return null;
     }
 
     @Override

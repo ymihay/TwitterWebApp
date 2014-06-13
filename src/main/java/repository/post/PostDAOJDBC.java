@@ -65,7 +65,12 @@ public class PostDAOJDBC implements PostDAO {
             "   and p.id = ?\n" +
             " order by p.sys_last_modified desc\n";
 
-    private static final String findByUserLoginSQL = "select p.id      as post_id,\n" +
+    private static final String userPostCountSQL = "select count(p.id) as count\n" +
+            "  from twt_post p\n" +
+            " where p.sys_delstate = 0\n" +
+            "   and p.user_id = ?\n";
+
+    private static final String findByUserLoginSQL = "select p.id  as post_id,\n" +
             "       p.user_id,\n" +
             "       p.text,\n" +
             "       u.*,\n" +
@@ -103,6 +108,23 @@ public class PostDAOJDBC implements PostDAO {
             " where p.sys_delstate = 0\n" +
             "   and p.user_id = ?\n" +
             " order by p.sys_last_modified desc\n";
+
+    private static final String findByUserIdPaginationSQL = "select * from (select rownum as rn, p.id as post_id,\n" +
+            "       p.user_id,\n" +
+            "       p.text,\n" +
+            "       u.*,\n" +
+            "       s.name    as sex_name,\n" +
+            "       c.name    as country_name" +
+            "  from twt_post p\n" +
+            "  left join twt_user u\n" +
+            "    on (u.id = p.user_id and u.sys_delstate = 0)\n" +
+            " left join twt_sex s\n" +
+            "    on (s.sys_delstate = 0 and s.id = u.sex_id)\n" +
+            "  left join twt_country c on (c.sys_delstate = 0 and c.id = u.country_id) " +
+            " where p.sys_delstate = 0\n" +
+            "   and p.user_id = ?\n" +
+            " order by p.sys_last_modified desc) where rn >= ? and rn <= ?\n";
+
 
     private static final String findAllAvailablePostsSQL = "select p.id      as post_id,\n" +
             "       p.user_id,\n" +
@@ -156,6 +178,37 @@ public class PostDAOJDBC implements PostDAO {
             "                       where s.sys_delstate = 0\n" +
             "                         and s.user_id = ?))\n" +
             " order by p.sys_last_modified desc\n";
+
+    private static final String availablePostsCountSQL = "select count(p.id) as count\n" +
+            "  from twt_post p\n" +
+            " where p.sys_delstate = 0\n" +
+            "   and (p.user_id = ? or\n" +
+            "       p.user_id in (select s.subscribed_on_user_id\n" +
+            "                        from twt_subscription s\n" +
+            "                       where s.sys_delstate = 0\n" +
+            "                         and s.user_id = ?))\n";
+
+    private static final String findAvailablePostByUserIdPaginationSQL = "select * from (select rownum as rn," +
+            "       p.id      as post_id,\n" +
+            "       p.user_id,\n" +
+            "       p.text,\n" +
+            "       u.*,\n" +
+            "       s.name    as sex_name,\n" +
+            "       c.name    as country_name" +
+            "  from twt_post p\n" +
+            "  left join twt_user u\n" +
+            "    on (u.sys_delstate = 0 and u.id = p.user_id)\n" +
+            " left join twt_sex s\n" +
+            "    on (s.sys_delstate = 0 and s.id = u.sex_id)\n" +
+            "  left join twt_country c on (c.sys_delstate = 0 and c.id = u.country_id) " +
+            " where p.sys_delstate = 0\n" +
+            "   and (p.user_id = ? or\n" +
+            "       p.user_id in (select s.subscribed_on_user_id\n" +
+            "                        from twt_subscription s\n" +
+            "                       where s.sys_delstate = 0\n" +
+            "                         and s.user_id = ?))\n" +
+            " order by p.sys_last_modified desc) where  rn >= ? and rn <= ? \n";
+
 
     private static final String findAllSQL = "select p.id      as post_id,\n" +
             "       p.user_id,\n" +
@@ -321,6 +374,33 @@ public class PostDAOJDBC implements PostDAO {
     }
 
     @Override
+    public List<Post> findByUserPagination(Integer userId, Integer startPos, Integer endPos) {
+        Connection connection = null;
+        PreparedStatement preparedStatement = null;
+        ResultSet resultSet = null;
+        List<Post> posts = new ArrayList<Post>();
+
+        try {
+            connection = cnFactory.getConnection();
+            preparedStatement = connection.prepareStatement(findByUserIdPaginationSQL);
+            preparedStatement.setInt(1, userId);
+            preparedStatement.setInt(2, startPos);
+            preparedStatement.setInt(3, endPos);
+            resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()) {
+                posts.add(map(resultSet));
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            close(resultSet);
+            close(preparedStatement);
+            cnFactory.closeConnection(connection);
+        }
+        return posts;
+    }
+
+    @Override
     public List<Post> findAvailablePosts(String login) {
         Connection connection = null;
         PreparedStatement preparedStatement = null;
@@ -357,6 +437,82 @@ public class PostDAOJDBC implements PostDAO {
             preparedStatement = connection.prepareStatement(findAvailablePostByUserIdSQL);
             preparedStatement.setInt(1, userID);
             preparedStatement.setInt(2, userID);
+            resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()) {
+                posts.add(map(resultSet));
+            }
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        } finally {
+            close(preparedStatement);
+            cnFactory.closeConnection(connection);
+        }
+        return posts;
+    }
+
+    @Override
+    public Integer availablePostCount(Integer userID) {
+        Connection connection = null;
+        PreparedStatement preparedStatement = null;
+        ResultSet resultSet = null;
+        Integer count = 0;
+
+        try {
+            connection = cnFactory.getConnection();
+            preparedStatement = connection.prepareStatement(availablePostsCountSQL);
+            preparedStatement.setInt(1, userID);
+            preparedStatement.setInt(2, userID);
+            resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()) {
+                count = resultSet.getInt("COUNT");
+            }
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        } finally {
+            close(preparedStatement);
+            cnFactory.closeConnection(connection);
+        }
+        return count;
+    }
+
+    @Override
+    public Integer userPostCount(Integer userID) {
+        Connection connection = null;
+        PreparedStatement preparedStatement = null;
+        ResultSet resultSet = null;
+        Integer count = 0;
+
+        try {
+            connection = cnFactory.getConnection();
+            preparedStatement = connection.prepareStatement(userPostCountSQL);
+            preparedStatement.setInt(1, userID);
+            resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()) {
+                count = resultSet.getInt("COUNT");
+            }
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        } finally {
+            close(preparedStatement);
+            cnFactory.closeConnection(connection);
+        }
+        return count;
+    }
+
+    @Override
+    public List<Post> findAvailablePostsPagination(Integer userId, Integer startPos, Integer endPos) {
+        Connection connection = null;
+        PreparedStatement preparedStatement = null;
+        ResultSet resultSet = null;
+        List<Post> posts = new ArrayList<Post>();
+
+        try {
+            connection = cnFactory.getConnection();
+            preparedStatement = connection.prepareStatement(findAvailablePostByUserIdPaginationSQL);
+            preparedStatement.setInt(1, userId);
+            preparedStatement.setInt(2, userId);
+            preparedStatement.setInt(3, startPos);
+            preparedStatement.setInt(4, endPos);
             resultSet = preparedStatement.executeQuery();
             while (resultSet.next()) {
                 posts.add(map(resultSet));

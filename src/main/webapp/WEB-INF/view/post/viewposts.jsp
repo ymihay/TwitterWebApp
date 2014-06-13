@@ -28,4 +28,6 @@
     </c:forEach>
 </table>
 
+<jsp:include page="/WEB-INF/view/footer/pagination.jsp"></jsp:include>
+
 <jsp:include page="/WEB-INF/view/footer/footer.jsp"></jsp:include>
