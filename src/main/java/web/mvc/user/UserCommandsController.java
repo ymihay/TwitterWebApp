@@ -90,10 +90,8 @@ public class UserCommandsController {
     @RequestMapping("/modifyuser")
     public String modifyUser(Model model) {
         //initUserDictionaries(model);
-        System.out.println("HERE!");
         model.addAttribute("user", userManager.getUser());
         model.addAttribute("action", "updateuser");
-        System.out.println("HERE!!!");
         return registerTemplate;
     }
 

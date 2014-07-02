@@ -28,7 +28,6 @@ public class AuthenticationInterceptor extends HandlerInterceptorAdapter {
     public boolean preHandle(HttpServletRequest request,
                              HttpServletResponse response, Object handler) throws Exception {
         String uri = request.getRequestURI();
-        System.out.println("YO!");
         if (!userManager.isLoggedIn() && !uri.endsWith(registerTemplate) && !uri.endsWith(addUserTemplate)) {
             response.sendRedirect(loginRedirect);
             return false;

@@ -49,5 +49,4 @@ public class UserManagerImpl implements UserManager {
         this.user = null;
         loggedIn = false;
     }
-
 }
