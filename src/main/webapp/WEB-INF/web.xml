@@ -3,31 +3,35 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://java.sun.com/xml/ns/javaee
 	      http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
-    <display-name>Archetype Created Web Application</display-name>
+    <!--    <display-name>Archetype Created Web Application</display-name>
 
-    <listener>
-        <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
-    </listener>
+      <listener>
+           <listener-class>org.springframework.web.util.Log4jConfigListener</listener-class>
+       </listener>
 
-    <servlet>
-        <servlet-name>FrontControllerServlet</servlet-name>
-        <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
-        <load-on-startup>1</load-on-startup>
-    </servlet>
+       <listener>
+           <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+       </listener>
 
-    <servlet-mapping>
-        <servlet-name>FrontControllerServlet</servlet-name>
-        <url-pattern>/pages/*</url-pattern>
-    </servlet-mapping>
+       <servlet>
+           <servlet-name>FrontControllerServlet</servlet-name>
+           <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+           <load-on-startup>1</load-on-startup>
+       </servlet>
 
-    <context-param>
-        <param-name>contextConfigLocation</param-name>
-        <param-value>/WEB-INF/FrontControllerServlet-servlet.xml</param-value>
-    </context-param>
+       <servlet-mapping>
+           <servlet-name>FrontControllerServlet</servlet-name>
+           <url-pattern>/pages/*</url-pattern>
+       </servlet-mapping>
 
-    <session-config>
-        <session-timeout>30</session-timeout>
-    </session-config>
+       <context-param>
+           <param-name>contextConfigLocation</param-name>
+           <param-value>/WEB-INF/FrontControllerServlet-servlet.xml</param-value>
+       </context-param>
 
+       <session-config>
+           <session-timeout>30</session-timeout>
+       </session-config>
+   !-->
 
 </web-app>

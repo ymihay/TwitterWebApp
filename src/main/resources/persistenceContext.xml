@@ -12,7 +12,7 @@ http://www.springframework.org/schema/context http://www.springframework.org/sch
           class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer"
           p:location="jdbc.properties"/>
 
-    <bean name="driverManagerDAO" class="repository.jdbc.DriverManagerDAOJDBC"
+    <bean name="driverManagerDAO" class="core.repository.jdbc.DriverManagerDAOJDBC"
           p:driver="${driver}"
           p:url="jdbc:${url}"
           p:user="${user}"

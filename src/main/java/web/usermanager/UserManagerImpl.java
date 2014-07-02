@@ -1,13 +1,13 @@
 package web.usermanager;
 
-import domain.User;
+import core.domain.User;
+import core.service.user.UserService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.context.annotation.ScopedProxyMode;
 import org.springframework.stereotype.Component;
-import service.user.UserService;
 
 /**
  * Created by Admin on 01.06.2014.
@@ -38,7 +38,7 @@ public class UserManagerImpl implements UserManager {
     public boolean login(String login, String password) {
         this.user = userService.findByLogin(login);
         if ((this.user == null) || (this.user.getPassword().compareTo(password) != 0)) {
-           return false;
+            return false;
         }
         loggedIn = true;
         return true;

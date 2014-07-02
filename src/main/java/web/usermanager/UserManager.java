@@ -1,6 +1,6 @@
 package web.usermanager;
 
-import domain.User;
+import core.domain.User;
 
 /**
  * Created by Admin on 25.05.2014.
