@@ -54,7 +54,7 @@ public class WebAppInitializer implements WebApplicationInitializer {
                 LOG.error("Mapping conflict: " + s);
             }
             throw new IllegalStateException(
-                    "'webservice' cannot be mapped to '/'");
+                    "'webservice' cannot be mapped to '/pages/*'");
         }
     }
 }

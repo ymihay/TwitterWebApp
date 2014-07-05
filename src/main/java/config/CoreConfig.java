@@ -12,15 +12,15 @@ import java.sql.SQLException;
  * Created by Admin on 01.07.2014.
  */
 @Configuration
-@ComponentScan(basePackages = {"core.repository", "core.service", "web"})
+@ComponentScan(basePackages = {"core.repository", "core.service"})
 //@PropertySource("classpath:/main/resources/jdbc.properties")
 public class CoreConfig {
     //@Autowired
     //Environment env;
 
-    @Bean(name = "driverManagerDAO", initMethod = "createConnectionPool", destroyMethod = "closeAllConnections")
+    @Bean(initMethod = "createConnectionPool", destroyMethod = "closeAllConnections")
     public ConnectionFactory createDriverManagerDAO() throws SQLException, InterruptedException {
-        // TODO: use property bean instaed explicit assigning
+        // TODO: use property bean instead explicit assigning
         DriverManagerDAOJDBC driverManager = new DriverManagerDAOJDBC();
         driverManager.setDriver("oracle.jdbc.OracleDriver");
         driverManager.setPassword("Tamvisoko111");

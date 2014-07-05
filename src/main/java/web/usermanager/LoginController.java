@@ -31,8 +31,8 @@ public class LoginController {
 
     @RequestMapping(value = "/login")
     private String tryToLogin(@RequestParam(required = false) String login,
-                             @RequestParam(required = false) String password,
-                             Model model, HttpServletRequest request) {
+                              @RequestParam(required = false) String password,
+                              Model model, HttpServletRequest request) {
         if (login == null) {
             LOG.warn("wrong credentials.");
             model.addAttribute("errorMessage", "Credentials are invalid. Please, try again");
@@ -42,7 +42,6 @@ public class LoginController {
             return VIEW_ALL_REDIRECT;
         }
         if (userManager.login(login, password)) {
-            model.addAttribute("user", userManager.getUser().getUserId());
             request.getSession().setAttribute("loggedUserId", userManager.getUser().getUserId());
         }
         return VIEW_ALL_REDIRECT;

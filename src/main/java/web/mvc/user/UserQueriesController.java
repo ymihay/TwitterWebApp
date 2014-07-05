@@ -7,7 +7,6 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import web.usermanager.UserManager;
@@ -34,11 +33,6 @@ public class UserQueriesController {
     private static final String viewUserTemplate = "user/viewuser";
     private static final String viewNoHitsTemplate = "search/nohits";
 
-    @ExceptionHandler(Exception.class)
-    public void handleExceptions(Exception exception) {
-        LOG.error(exception.getStackTrace().toString());
-    }
-
     @RequestMapping("/viewall")
     public String viewAllUsers(Model model) {
         model.addAttribute("users", userService.findAll());
@@ -57,7 +51,6 @@ public class UserQueriesController {
             } else {
                 model.addAttribute("isFollowing", false);
             }
-
         }
     }
 

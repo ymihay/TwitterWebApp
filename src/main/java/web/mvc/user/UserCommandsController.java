@@ -39,7 +39,7 @@ public class UserCommandsController {
     @Autowired
     public UserCommandsController(UserService userService, UserManager userManager) {
         this.userService = userService;
-        //this.userManager = userManager;
+        this.userManager = userManager;
     }
 
     @ExceptionHandler(Exception.class)

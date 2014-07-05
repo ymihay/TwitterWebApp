@@ -27,6 +27,10 @@ public class AuthenticationInterceptor extends HandlerInterceptorAdapter {
     @Override
     public boolean preHandle(HttpServletRequest request,
                              HttpServletResponse response, Object handler) throws Exception {
+        // TODO: remove this block. It should work based on
+        if ((userManager == null)) {
+            userManager = (UserManager) request.getSession().getAttribute("scopedTarget.userManager");
+        }
         String uri = request.getRequestURI();
         if (!userManager.isLoggedIn() && !uri.endsWith(registerTemplate) && !uri.endsWith(addUserTemplate)) {
             response.sendRedirect(loginRedirect);
