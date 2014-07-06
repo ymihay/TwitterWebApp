@@ -13,7 +13,7 @@ import org.springframework.stereotype.Component;
 /**
  * Created by Admin on 01.06.2014.
  */
-@Component
+@Component(value = "userManager")
 @Scope(value = "session", proxyMode = ScopedProxyMode.INTERFACES)
 public class UserManagerImpl implements UserManager {
 

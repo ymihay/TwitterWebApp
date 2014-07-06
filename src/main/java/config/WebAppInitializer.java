@@ -22,39 +22,51 @@ public class WebAppInitializer implements WebApplicationInitializer {
 
     @Override
     public void onStartup(ServletContext servletContext) {
-        WebApplicationContext rootContext = createRootContext(servletContext);
+        WebApplicationContext coreContext = createCoreContext(servletContext);
 
-        configureSpringMvc(servletContext, rootContext);
+        configureRest(servletContext, coreContext);
     }
 
-    private WebApplicationContext createRootContext(ServletContext servletContext) {
-        AnnotationConfigWebApplicationContext rootContext = new AnnotationConfigWebApplicationContext();
-        rootContext.register(CoreConfig.class);
-        rootContext.refresh();
+    private WebApplicationContext createCoreContext(ServletContext servletContext) {
+        AnnotationConfigWebApplicationContext coreContext = new AnnotationConfigWebApplicationContext();
+        coreContext.register(CoreConfig.class);
+        coreContext.refresh();
 
         servletContext.addListener(new Log4jConfigListener());
-        servletContext.addListener(new ContextLoaderListener(rootContext));
+        servletContext.addListener(new ContextLoaderListener(coreContext));
         servletContext.setInitParameter("defaultHtmlEscape", "true");
 
-        return rootContext;
+        return coreContext;
     }
 
-    private void configureSpringMvc(ServletContext servletContext, WebApplicationContext rootContext) {
+    private void configureSpringMvc(ServletContext servletContext, WebApplicationContext coreContext) {
         AnnotationConfigWebApplicationContext mvcContext = new AnnotationConfigWebApplicationContext();
         mvcContext.register(MvcConfig.class);
+        configureWebContext(servletContext, coreContext, mvcContext, "/pages/*");
+    }
 
-        mvcContext.setParent(rootContext);
+    private void configureRest(ServletContext servletContext, WebApplicationContext coreContext) {
+        AnnotationConfigWebApplicationContext restContext = new AnnotationConfigWebApplicationContext();
+        restContext.register(RestWebConfig.class);
+        configureWebContext(servletContext, coreContext, restContext, "/rest/*");
+    }
+
+    private void configureWebContext(ServletContext servletContext,
+                                     WebApplicationContext coreContext,
+                                     AnnotationConfigWebApplicationContext annotationWebContext,
+                                     String mappingUrl) {
+        annotationWebContext.setParent(coreContext);
         ServletRegistration.Dynamic appServlet = servletContext.addServlet(
-                "webservice", new DispatcherServlet(mvcContext));
+                "webservice", new DispatcherServlet(annotationWebContext));
         appServlet.setLoadOnStartup(1);
-        Set<String> mappingConflicts = appServlet.addMapping("/pages/*");
+        Set<String> mappingConflicts = appServlet.addMapping(mappingUrl);
 
         if (!mappingConflicts.isEmpty()) {
             for (String s : mappingConflicts) {
                 LOG.error("Mapping conflict: " + s);
             }
             throw new IllegalStateException(
-                    "'webservice' cannot be mapped to '/pages/*'");
+                    "'webservice' cannot be mapped to " + mappingUrl);
         }
     }
 }
