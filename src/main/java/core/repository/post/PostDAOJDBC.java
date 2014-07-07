@@ -209,6 +209,25 @@ public class PostDAOJDBC implements PostDAO {
             "                         and s.user_id = ?))\n" +
             " order by p.sys_last_modified desc) where  rn >= ? and rn <= ? \n";
 
+    private static final String findFriendsPostsSQL = "select p.id      as post_id,\n" +
+            "       p.user_id,\n" +
+            "       p.text,\n" +
+            "       u.*,\n" +
+            "       s.name    as sex_name,\n" +
+            "       c.name    as country_name\n" +
+            "  from twt_post p\n" +
+            "  left join twt_user u\n" +
+            "    on (u.sys_delstate = 0 and u.id = p.user_id)\n" +
+            "  left join twt_sex s\n" +
+            "    on (s.sys_delstate = 0 and s.id = u.sex_id)\n" +
+            "  left join twt_country c\n" +
+            "    on (c.sys_delstate = 0 and c.id = u.country_id)\n" +
+            " where p.sys_delstate = 0\n" +
+            "   and (p.user_id in (select s.subscribed_on_user_id\n" +
+            "                        from twt_subscription s\n" +
+            "                       where s.sys_delstate = 0\n" +
+            "                         and s.user_id = ?))\n";
+
 
     private static final String findAllSQL = "select p.id      as post_id,\n" +
             "       p.user_id,\n" +
@@ -394,6 +413,30 @@ public class PostDAOJDBC implements PostDAO {
             e.printStackTrace();
         } finally {
             close(resultSet);
+            close(preparedStatement);
+            cnFactory.closeConnection(connection);
+        }
+        return posts;
+    }
+
+    @Override
+    public List<Post> findFriendsPosts(Integer id) {
+        Connection connection = null;
+        PreparedStatement preparedStatement = null;
+        ResultSet resultSet = null;
+        List<Post> posts = new ArrayList<Post>();
+
+        try {
+            connection = cnFactory.getConnection();
+            preparedStatement = connection.prepareStatement(findFriendsPostsSQL);
+            preparedStatement.setInt(1, id);
+            resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()) {
+                posts.add(map(resultSet));
+            }
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        } finally {
             close(preparedStatement);
             cnFactory.closeConnection(connection);
         }

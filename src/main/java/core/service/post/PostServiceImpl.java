@@ -72,6 +72,11 @@ public class PostServiceImpl implements PostService {
     }
 
     @Override
+    public List<Post> findFriendsPosts(Integer userId) {
+        return repository.findFriendsPosts(userId);
+    }
+
+    @Override
     public List<Post> findAll() {
         return repository.findAll();
     }

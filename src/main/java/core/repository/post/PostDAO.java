@@ -28,6 +28,8 @@ public interface PostDAO {
 
     public List<Post> findByUserPagination(Integer userId, Integer startPos, Integer endPos);
 
+    public List<Post> findFriendsPosts(Integer id);
+
     public List<Post> findAvailablePosts(String login);
 
     public List<Post> findAvailablePosts(Integer userId);

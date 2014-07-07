@@ -26,6 +26,8 @@ public interface PostService {
 
     public List<Post> findAvailablePostsPagination(Integer userId, Integer startPos, Integer endPos);
 
+    public List<Post> findFriendsPosts(Integer userId);
+
     public List<Post> findAll();
 
     public Post findById(Integer postId);

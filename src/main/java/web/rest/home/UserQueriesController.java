@@ -1,6 +1,7 @@
-package web.rest.user;
+package web.rest.home;
 
 import core.domain.User;
+import core.service.post.PostService;
 import core.service.user.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -15,16 +16,18 @@ import java.util.List;
  * Created by Admin on 05.07.2014.
  */
 @Controller
-@RequestMapping("users")
+@RequestMapping(value = "/users", method = RequestMethod.GET)
 public class UserQueriesController {
 
     @Autowired
     private UserService userService;
 
     @Autowired
+    private PostService postService;
+
+    @Autowired
     private UserManager userManager;
 
-    @RequestMapping(method = RequestMethod.GET)
     @ResponseStatus(HttpStatus.OK)
     //curl -H Accept:application/json http://localhost:8080/rest/users
     public
@@ -33,12 +36,12 @@ public class UserQueriesController {
         return userService.findAll();
     }
 
-    @RequestMapping(method = RequestMethod.GET,
-            value = "/{id}",
+    //curl -H Accept:application/json http://localhost:8080/rest/users/3
+    @RequestMapping(value = "/{id}",
             headers = "Accept=application/json")
     public
     @ResponseBody
-    ResponseEntity<User> getUser(@PathVariable Integer id) {
+    ResponseEntity<User> getUserById(@PathVariable Integer id) {
         User user = userService.findById(id);
         if (user == null) {
             return new ResponseEntity<User>(HttpStatus.NOT_FOUND);
@@ -46,16 +49,13 @@ public class UserQueriesController {
         return new ResponseEntity<User>(user, HttpStatus.OK);
     }
 
-    @RequestMapping(method = RequestMethod.GET,
-            value = "/{login}/{login}",
+    //curl -H Accept:application/json http://localhost:8080/rest/users/me
+    @RequestMapping(value = "/me",
             headers = "Accept=application/json")
     public
     @ResponseBody
-    ResponseEntity<User> viewUser(@PathVariable String login) {
-        User user = userService.findByLogin(login);
-        if (user == null) {
-            return new ResponseEntity<User>(HttpStatus.NOT_FOUND);
-        }
+    ResponseEntity<User> getMyUserId() {
+        User user = userManager.getUser();
         return new ResponseEntity<User>(user, HttpStatus.OK);
     }
 }
