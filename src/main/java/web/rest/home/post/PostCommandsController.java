@@ -29,11 +29,11 @@ public class PostCommandsController {
     @RequestMapping(method = RequestMethod.POST, consumes = "application/json", produces = "application/json")
     public
     @ResponseBody
-    ResponseEntity<Post> addPost(@RequestBody Post post, UriComponentsBuilder builder) {
+    ResponseEntity<Post> addTweet(@RequestBody Post post, UriComponentsBuilder builder) {
         User currentUser = userManager.getUser();
 
-        if (post.getUser().equals(currentUser)) {
-            return new ResponseEntity<Post>(HttpStatus.CONFLICT);
+        if (!post.getUser().equals(currentUser)) {
+            return new ResponseEntity<Post>(HttpStatus.NOT_ACCEPTABLE);
         }
 
         Integer newPostId = postService.create(post);
@@ -55,6 +55,43 @@ public class PostCommandsController {
         );
 
         return new ResponseEntity<Post>(newPost, headers, HttpStatus.CREATED);
+    }
+
+    //curl -v -X PUT -H content-type:application/json --data '{"postId":86,"postMessage":"ggg","user":{"userId":3,"firstName":"Yana :)","patronymic":"Mikhaylovna :)","lastName":"Mikhaylenko :)","login":"ymikhaylenko","password":"yanayana","sex":null,"country":null,"birthdate":null,"subscribedList":null,"subscribedOnUserList":null,"postList":null}}' http://localhost:8080/rest/users/me/tweets/
+    @RequestMapping(method = RequestMethod.PUT, consumes = "application/json", produces = "application/json")
+    public
+    @ResponseBody
+    ResponseEntity<Post> updateTweet(@RequestBody Post post, UriComponentsBuilder builder) {
+        User currentUser = userManager.getUser();
+        Integer postId = post.getPostId();
+        if (postId == null) {
+            return new ResponseEntity<Post>(HttpStatus.NOT_ACCEPTABLE);
+        }
+
+        Post oldPost = postService.findById(postId);
+
+        // check if user updates his own posts
+        if (!post.getUser().equals(currentUser) || !oldPost.getUser().equals(currentUser)) {
+            return new ResponseEntity<Post>(HttpStatus.NOT_ACCEPTABLE);
+        }
+
+        if (!postService.update(post)) {
+            return new ResponseEntity<Post>(HttpStatus.FORBIDDEN);
+        }
+
+        Post newPost = postService.findById(post.getPostId());
+
+        if (newPost == null) {
+            return new ResponseEntity<Post>(HttpStatus.FORBIDDEN);
+        }
+
+        HttpHeaders headers = new HttpHeaders();
+        headers.setLocation(
+                builder.path("/rest/users/tweets/{id}")
+                        .buildAndExpand(postId.toString()).toUri()
+        );
+
+        return new ResponseEntity<Post>(newPost, headers, HttpStatus.OK);
     }
 
     /**
