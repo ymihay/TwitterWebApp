@@ -32,14 +32,14 @@ public class PostQueriesController {
      *
      * @return
      */
-    @RequestMapping(value = "/me/tweets")
     //curl -H Accept:application/json http://localhost:8080/rest/users/me/tweets
+    @RequestMapping(value = "/me/tweets")
     public
     @ResponseBody
     ResponseEntity<List> getMyTweets() {
         User user = userManager.getUser();
         if (user != null) {
-            List<Post> posts = postService.findByUser(3);
+            List<Post> posts = postService.findByUser(user.getUserId());
             if (posts.isEmpty()) {
                 return new ResponseEntity<List>(HttpStatus.NOT_FOUND);
             }
@@ -48,8 +48,30 @@ public class PostQueriesController {
         return new ResponseEntity<List>(HttpStatus.NOT_FOUND);
     }
 
-    @RequestMapping(value = "/{id}/tweets")
+    /**
+     * Returns logged in user tweets with requested range count
+     *
+     * @return
+     */
+    //curl -H Accept:application/json http://localhost:8080/rest/users/me/tweets/pagination/1/100
+    @RequestMapping(value = "/me/tweets/pagination/{start}/{end}")
+    public
+    @ResponseBody
+    ResponseEntity<List> getMyTweetsPagination(@PathVariable Integer start,
+                                               @PathVariable Integer end) {
+        User user = userManager.getUser();
+        if (user != null) {
+            List<Post> posts = postService.findByUserPagination(user.getUserId(), start, end);
+            if (posts.isEmpty()) {
+                return new ResponseEntity<List>(HttpStatus.NOT_FOUND);
+            }
+            return new ResponseEntity<List>(posts, HttpStatus.OK);
+        }
+        return new ResponseEntity<List>(HttpStatus.NOT_FOUND);
+    }
+
     //curl -H Accept:application/json http://localhost:8080/rest/users/3/tweets
+    @RequestMapping(value = "/{id}/tweets")
     public
     @ResponseBody
     ResponseEntity<List> getUserAvailableTweets(@PathVariable Integer id) {
@@ -60,8 +82,27 @@ public class PostQueriesController {
         return new ResponseEntity<List>(posts, HttpStatus.OK);
     }
 
-    @RequestMapping(value = "tweets/{tweetId}")
+    /**
+     * Returns user with specified {id} tweets with requested range count
+     *
+     * @return
+     */
+    //curl -H Accept:application/json http://localhost:8080/rest/users/3/tweets/pagination/1/100
+    @RequestMapping(value = "/{id}/tweets/pagination/{start}/{end}")
+    public
+    @ResponseBody
+    ResponseEntity<List> getUserAvailableTweetsPagination(@PathVariable Integer id,
+                                                          @PathVariable Integer start,
+                                                          @PathVariable Integer end) {
+        List<Post> posts = postService.findByUserPagination(id, start, end);
+        if (posts.isEmpty()) {
+            return new ResponseEntity<List>(HttpStatus.NOT_FOUND);
+        }
+        return new ResponseEntity<List>(posts, HttpStatus.OK);
+    }
+
     //curl -H Accept:application/json http://localhost:8080/rest/users/tweets/{tweetId}
+    @RequestMapping(value = "tweets/{tweetId}")
     public
     @ResponseBody
     ResponseEntity<Post> getTweet(@PathVariable Integer tweetId) {

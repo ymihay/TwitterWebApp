@@ -28,8 +28,8 @@ public class UserQueriesController {
     @Autowired
     private UserManager userManager;
 
-    @ResponseStatus(HttpStatus.OK)
     //curl -H Accept:application/json http://localhost:8080/rest/users
+    @ResponseStatus(HttpStatus.OK)
     public
     @ResponseBody
     List<User> getAllUsers() {

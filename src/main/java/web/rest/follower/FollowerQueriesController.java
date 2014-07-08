@@ -28,8 +28,8 @@ public class FollowerQueriesController {
      *
      * @return
      */
-    @RequestMapping(value = "/{id}")
     //curl -H Accept:application/json http://localhost:8080/rest/followers/3
+    @RequestMapping(value = "/{id}")
     public
     @ResponseBody
     ResponseEntity<List> getFollowers(@PathVariable Integer id) {

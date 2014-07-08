@@ -27,8 +27,8 @@ public class SearchQueriesController {
     @Autowired
     private PostService postService;
 
-    @RequestMapping(value = "/tweets/{phrase}")
     //curl -H Accept:application/json http://localhost:8080/rest/search/tweets/{phrase}
+    @RequestMapping(value = "/tweets/{phrase}")
     public
     @ResponseBody
     ResponseEntity<List> findPostsByPhrase(@PathVariable String phrase) {
@@ -39,8 +39,8 @@ public class SearchQueriesController {
         return new ResponseEntity<List>(posts, HttpStatus.OK);
     }
 
-    @RequestMapping(value = "/users/{login}")
     //curl -H Accept:application/json http://localhost:8080/rest/search/users/{login}
+    @RequestMapping(value = "/users/{login}")
     public
     @ResponseBody
     ResponseEntity<User> findUsersByLogin(@PathVariable String login) {

@@ -50,8 +50,8 @@ public class FriendQueriesController {
      * @param id
      * @return
      */
-    @RequestMapping(value = "/{id}/tweets")
     //curl -H Accept:application/json http://localhost:8080/rest/friends/3/tweets
+    @RequestMapping(value = "/{id}/tweets")
     public
     @ResponseBody
     ResponseEntity<List> getFriendsPosts(@PathVariable Integer id) {
