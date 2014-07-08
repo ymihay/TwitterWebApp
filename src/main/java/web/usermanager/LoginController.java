@@ -1,7 +1,5 @@
 package web.usermanager;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -16,7 +14,7 @@ import javax.servlet.http.HttpServletRequest;
 @Controller
 public class LoginController {
 
-    private static Logger LOG = LoggerFactory.getLogger(LoginController.class);
+    //   private static Logger LOG = LoggerFactory.getLogger(LoginController.class);
     private static final String LOGIN_PAGE = "authentication/login";
     private static final String LOGIN_REDIRECT = "redirect:login";
     private static final String VIEW_ALL_REDIRECT = "redirect:viewall";
@@ -34,7 +32,7 @@ public class LoginController {
                               @RequestParam(required = false) String password,
                               Model model, HttpServletRequest request) {
         if (login == null) {
-            LOG.warn("wrong credentials.");
+            //LOG.warn("wrong credentials.");
             model.addAttribute("errorMessage", "Credentials are invalid. Please, try again");
             return LOGIN_PAGE;
         }

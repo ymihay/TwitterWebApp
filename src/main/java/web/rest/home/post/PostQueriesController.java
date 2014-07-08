@@ -1,4 +1,4 @@
-package web.rest.home;
+package web.rest.home.post;
 
 import core.domain.Post;
 import core.domain.User;
@@ -19,7 +19,7 @@ import java.util.List;
  * Created by Admin on 07.07.2014.
  */
 @Controller
-@RequestMapping(value = "/users/", method = RequestMethod.GET)
+@RequestMapping(value = "/users", method = RequestMethod.GET)
 public class PostQueriesController {
     @Autowired
     private PostService postService;
@@ -58,5 +58,17 @@ public class PostQueriesController {
             return new ResponseEntity<List>(HttpStatus.NOT_FOUND);
         }
         return new ResponseEntity<List>(posts, HttpStatus.OK);
+    }
+
+    @RequestMapping(value = "tweets/{tweetId}")
+    //curl -H Accept:application/json http://localhost:8080/rest/users/tweets/{tweetId}
+    public
+    @ResponseBody
+    ResponseEntity<Post> getTweet(@PathVariable Integer tweetId) {
+        Post post = postService.findById(tweetId);
+        if (post == null) {
+            return new ResponseEntity<Post>(HttpStatus.NOT_FOUND);
+        }
+        return new ResponseEntity<Post>(post, HttpStatus.OK);
     }
 }

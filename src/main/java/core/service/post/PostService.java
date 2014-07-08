@@ -34,7 +34,7 @@ public interface PostService {
 
     public boolean isUserPost(Integer postId, Integer userId);
 
-    public boolean create(Post post);
+    public Integer create(Post post);
 
     public boolean update(Post post);
 

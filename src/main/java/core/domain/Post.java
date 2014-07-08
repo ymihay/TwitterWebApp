@@ -1,5 +1,10 @@
 package core.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
+import javax.xml.bind.annotation.XmlRootElement;
+import java.io.Serializable;
+
 /**
  * Created with IntelliJ IDEA.
  * User: Admin
@@ -7,7 +12,9 @@ package core.domain;
  * Time: 17:39
  * To change this template use File | Settings | File Templates.
  */
-public class Post {
+@XmlRootElement
+@JsonIgnoreProperties(ignoreUnknown = true)
+public class Post implements Serializable {
     private Integer postId;
     private String postMessage;
     private User user;

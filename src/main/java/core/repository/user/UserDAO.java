@@ -40,7 +40,7 @@ public interface UserDAO {
 
     public boolean unSetSubscription(Integer userId, Integer userSubscribedOnId);
 
-    public boolean create(User user);
+    public Integer create(User user);
 
     public boolean update(User user);
 

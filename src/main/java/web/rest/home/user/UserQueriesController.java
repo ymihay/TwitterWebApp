@@ -1,4 +1,4 @@
-package web.rest.home;
+package web.rest.home.user;
 
 import core.domain.User;
 import core.service.post.PostService;

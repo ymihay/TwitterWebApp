@@ -81,7 +81,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public boolean create(User user) {
+    public Integer create(User user) {
         return repository.create(user);
     }
 

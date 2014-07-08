@@ -12,7 +12,7 @@ import java.sql.SQLException;
  * Created by Admin on 01.07.2014.
  */
 @Configuration
-@ComponentScan(basePackages = {"core.repository", "core.service"})
+@ComponentScan(basePackages = {"core.repository", "core.service", "core.domain"})
 //@PropertySource("classpath:/main/resources/jdbc.properties")
 public class CoreConfig {
     //@Autowired

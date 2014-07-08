@@ -93,7 +93,7 @@ public class PostServiceImpl implements PostService {
     }
 
     @Override
-    public boolean create(Post post) {
+    public Integer create(Post post) {
         return repository.create(post);
     }
 

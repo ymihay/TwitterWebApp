@@ -402,7 +402,7 @@ public class UserDAOJDBC implements UserDAO {
             close(preparedStatement);
             cnFactory.closeConnection(connection);
         }
-        return false;
+        return true;
     }
 
     @Override
@@ -485,12 +485,13 @@ public class UserDAOJDBC implements UserDAO {
 
 
     @Override
-    public boolean create(User user) {
+    public Integer create(User user) {
         Connection connection = null;
         PreparedStatement preparedStatement = null;
         try {
             connection = cnFactory.getConnection();
-            preparedStatement = connection.prepareStatement(createUserSQL);
+            String generatedColumns[] = {"ID"};
+            preparedStatement = connection.prepareStatement(createUserSQL, generatedColumns);
             preparedStatement.setString(1, user.getFirstName());
             preparedStatement.setString(2, user.getPatronymic());
             preparedStatement.setString(3, user.getLastName());
@@ -507,14 +508,19 @@ public class UserDAOJDBC implements UserDAO {
                 preparedStatement.setInt(7, user.getCountry().getCountryId());
             }
             preparedStatement.setTimestamp(8, user.getBirthdate());
-            return preparedStatement.execute();
+            if (!preparedStatement.execute()) {
+                ResultSet resultSet = preparedStatement.getGeneratedKeys();
+                if (resultSet.next()) {
+                    return resultSet.getInt(1);
+                }
+            }
         } catch (Exception ex) {
             ex.printStackTrace();
         } finally {
             close(preparedStatement);
             cnFactory.closeConnection(connection);
         }
-        return true;
+        return 0;
     }
 
     @Override

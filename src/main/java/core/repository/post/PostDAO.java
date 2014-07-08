@@ -40,7 +40,7 @@ public interface PostDAO {
 
     public List<Post> findAll();
 
-    public boolean create(Post post);
+    public Integer create(Post post);
 
     public boolean update(Post post);
 

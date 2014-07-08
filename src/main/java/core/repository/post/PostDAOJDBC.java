@@ -278,7 +278,7 @@ public class PostDAOJDBC implements PostDAO {
         Connection connection = null;
         PreparedStatement preparedStatement = null;
         ResultSet resultSet = null;
-        Post post = new Post();
+        Post post = null;
 
         try {
             connection = cnFactory.getConnection();
@@ -594,24 +594,29 @@ public class PostDAOJDBC implements PostDAO {
     }
 
     @Override
-    public boolean create(Post post) {
+    public Integer create(Post post) {
         Connection connection = null;
         PreparedStatement preparedStatement = null;
 
         try {
             connection = cnFactory.getConnection();
-            preparedStatement = connection.prepareStatement(createPostSQL);
+            String generatedColumns[] = {"ID"};
+            preparedStatement = connection.prepareStatement(createPostSQL, generatedColumns);
             preparedStatement.setInt(1, post.getUser().getUserId());
             preparedStatement.setString(2, post.getPostMessage());
-
-            return preparedStatement.execute();
+            if (!preparedStatement.execute()) {
+                ResultSet resultSet = preparedStatement.getGeneratedKeys();
+                if (resultSet.next()) {
+                    return resultSet.getInt(1);
+                }
+            }
         } catch (Exception ex) {
             ex.printStackTrace();
         } finally {
             close(preparedStatement);
             cnFactory.closeConnection(connection);
         }
-        return true;
+        return 0;
     }
 
     @Override

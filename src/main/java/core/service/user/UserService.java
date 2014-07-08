@@ -32,7 +32,7 @@ public interface UserService {
 
     public boolean isFollowingForUser(Integer userId, Integer followingUserId);
 
-    public boolean create(User user);
+    public Integer create(User user);
 
     public boolean update(User user);
 

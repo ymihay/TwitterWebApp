@@ -1,5 +1,8 @@
 package core.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
+import java.io.Serializable;
 import java.sql.Timestamp;
 import java.util.List;
 
@@ -10,7 +13,8 @@ import java.util.List;
  * Time: 17:27
  * To change this template use File | Settings | File Templates.
  */
-public class User {
+@JsonIgnoreProperties(ignoreUnknown = true)
+public class User implements Serializable {
     private Integer userId;
     private String firstName;
     private String patronymic;

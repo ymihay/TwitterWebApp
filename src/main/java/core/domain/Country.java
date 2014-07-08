@@ -1,5 +1,7 @@
 package core.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 /**
  * Created with IntelliJ IDEA.
  * User: Admin
@@ -7,6 +9,7 @@ package core.domain;
  * Time: 17:33
  * To change this template use File | Settings | File Templates.
  */
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class Country {
     private Integer countryId;
     private String countryName;

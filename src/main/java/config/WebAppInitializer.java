@@ -1,7 +1,5 @@
 package config;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.web.WebApplicationInitializer;
 import org.springframework.web.context.ContextLoaderListener;
 import org.springframework.web.context.WebApplicationContext;
@@ -18,7 +16,7 @@ import java.util.Set;
  */
 public class WebAppInitializer implements WebApplicationInitializer {
 
-    private static Logger LOG = LoggerFactory.getLogger(WebAppInitializer.class);
+    //private static Logger LOG = LoggerFactory.getLogger(WebAppInitializer.class);
 
     @Override
     public void onStartup(ServletContext servletContext) {
@@ -63,7 +61,7 @@ public class WebAppInitializer implements WebApplicationInitializer {
 
         if (!mappingConflicts.isEmpty()) {
             for (String s : mappingConflicts) {
-                LOG.error("Mapping conflict: " + s);
+                //LOG.error("Mapping conflict: " + s);
             }
             throw new IllegalStateException(
                     "'webservice' cannot be mapped to " + mappingUrl);
