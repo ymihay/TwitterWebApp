@@ -2,13 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="65b13acd-b200-456f-8cbd-16c0cfa87dfb" name="Default" comment="Deleted unnecessary folders">
-      <change type="DELETED" beforePath="C:\Users\Admin\IdeaProjects\TwitterWebApplication\.idea\.name" afterPath="" />
       <change type="DELETED" beforePath="C:\Users\Admin\IdeaProjects\TwitterWebApplication\.idea\artifacts\TwitterWebApplication_war.xml" afterPath="" />
       <change type="DELETED" beforePath="C:\Users\Admin\IdeaProjects\TwitterWebApplication\.idea\artifacts\TwitterWebApplication_war_exploded.xml" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Admin\IdeaProjects\TwitterWebApplication\.idea\compiler.xml" afterPath="" />
       <change type="DELETED" beforePath="C:\Users\Admin\IdeaProjects\TwitterWebApplication\.idea\copyright\profiles_settings.xml" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Admin\IdeaProjects\TwitterWebApplication\.idea\deployment.xml" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Admin\IdeaProjects\TwitterWebApplication\.idea\encodings.xml" afterPath="" />
       <change type="DELETED" beforePath="C:\Users\Admin\IdeaProjects\TwitterWebApplication\.idea\libraries\.idea\.name" afterPath="" />
       <change type="DELETED" beforePath="C:\Users\Admin\IdeaProjects\TwitterWebApplication\.idea\libraries\.idea\compiler.xml" afterPath="" />
       <change type="DELETED" beforePath="C:\Users\Admin\IdeaProjects\TwitterWebApplication\.idea\libraries\.idea\copyright\profiles_settings.xml" afterPath="" />
@@ -39,11 +35,7 @@
       <change type="DELETED" beforePath="C:\Users\Admin\IdeaProjects\TwitterWebApplication\.idea\libraries\Maven__org_springframework_spring_expression_3_2_2_RELEASE.xml" afterPath="" />
       <change type="DELETED" beforePath="C:\Users\Admin\IdeaProjects\TwitterWebApplication\.idea\libraries\Maven__org_springframework_spring_web_3_2_2_RELEASE.xml" afterPath="" />
       <change type="DELETED" beforePath="C:\Users\Admin\IdeaProjects\TwitterWebApplication\.idea\libraries\Maven__org_springframework_spring_webmvc_3_2_2_RELEASE.xml" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Admin\IdeaProjects\TwitterWebApplication\.idea\misc.xml" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Admin\IdeaProjects\TwitterWebApplication\.idea\modules.xml" afterPath="" />
       <change type="DELETED" beforePath="C:\Users\Admin\IdeaProjects\TwitterWebApplication\.idea\scopes\scope_settings.xml" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Admin\IdeaProjects\TwitterWebApplication\.idea\uiDesigner.xml" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Admin\IdeaProjects\TwitterWebApplication\.idea\vcs.xml" afterPath="" />
       <change type="DELETED" beforePath="C:\Users\Admin\IdeaProjects\TwitterWebApplication\.idea\workspace.xml" afterPath="" />
     </list>
     <ignored path="TwitterWebApplication.iws" />
@@ -155,7 +147,7 @@
       <file leaf-file-name=".gitignore" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/.gitignore">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.13456464" vertical-offset="0" max-vertical-offset="379">
+            <state vertical-scroll-proportion="0.13709678" vertical-offset="0" max-vertical-offset="372">
               <caret line="3" column="4" selection-start-line="3" selection-start-column="4" selection-end-line="3" selection-end-column="4" />
               <folding />
             </state>
@@ -883,7 +875,7 @@
       <workItem from="1404986912666" duration="25000" />
       <workItem from="1404991019039" duration="970000" />
       <workItem from="1404992039656" duration="817000" />
-      <workItem from="1404993018888" duration="975000" />
+      <workItem from="1404993018888" duration="1066000" />
     </task>
     <task id="LOCAL-00001" summary="Added UserConroller, Post Controller to handle user interactions, jsp pages for CRUD users, posts&#10;">
       <created>1402592764875</created>
@@ -969,11 +961,15 @@
       <created>1404993963729</created>
       <updated>1404993963729</updated>
     </task>
-    <option name="localTasksCounter" value="22" />
+    <task id="LOCAL-00022" summary="Deleted unnecessary folders">
+      <created>1404994021061</created>
+      <updated>1404994021061</updated>
+    </task>
+    <option name="localTasksCounter" value="23" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="290792000" />
+    <option name="totallyTimeSpent" value="290883000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="1" y="1" width="1302" height="766" extended-state="0" />
@@ -991,7 +987,7 @@
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39940828" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="true" content_ui="tabs" />
       <window_info id="IDEtalk Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32913387" sideWeight="0.5" order="10" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.34015748" sideWeight="0.5" order="10" side_tool="true" content_ui="tabs" />
       <window_info id="IDEtalk" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32913387" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32598424" sideWeight="0.5" order="14" side_tool="false" content_ui="tabs" />
@@ -1002,7 +998,7 @@
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32985386" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.26688102" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.34015748" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.34015748" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -1463,7 +1459,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/.gitignore">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.13456464" vertical-offset="0" max-vertical-offset="379">
+        <state vertical-scroll-proportion="0.13709678" vertical-offset="0" max-vertical-offset="372">
           <caret line="3" column="4" selection-start-line="3" selection-start-column="4" selection-end-line="3" selection-end-column="4" />
           <folding />
         </state>
