@@ -2,9 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="65b13acd-b200-456f-8cbd-16c0cfa87dfb" name="Default" comment="Deleted unnecessary folders">
-      <change type="DELETED" beforePath="C:\Users\Admin\IdeaProjects\TwitterWebApplication\.idea\artifacts\TwitterWebApplication_war.xml" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Admin\IdeaProjects\TwitterWebApplication\.idea\artifacts\TwitterWebApplication_war_exploded.xml" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Admin\IdeaProjects\TwitterWebApplication\.idea\copyright\profiles_settings.xml" afterPath="" />
       <change type="DELETED" beforePath="C:\Users\Admin\IdeaProjects\TwitterWebApplication\.idea\libraries\.idea\.name" afterPath="" />
       <change type="DELETED" beforePath="C:\Users\Admin\IdeaProjects\TwitterWebApplication\.idea\libraries\.idea\compiler.xml" afterPath="" />
       <change type="DELETED" beforePath="C:\Users\Admin\IdeaProjects\TwitterWebApplication\.idea\libraries\.idea\copyright\profiles_settings.xml" afterPath="" />
@@ -15,28 +12,8 @@
       <change type="DELETED" beforePath="C:\Users\Admin\IdeaProjects\TwitterWebApplication\.idea\libraries\.idea\scopes\scope_settings.xml" afterPath="" />
       <change type="DELETED" beforePath="C:\Users\Admin\IdeaProjects\TwitterWebApplication\.idea\libraries\.idea\vcs.xml" afterPath="" />
       <change type="DELETED" beforePath="C:\Users\Admin\IdeaProjects\TwitterWebApplication\.idea\libraries\.idea\workspace.xml" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Admin\IdeaProjects\TwitterWebApplication\.idea\libraries\Maven__aopalliance_aopalliance_1_0.xml" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Admin\IdeaProjects\TwitterWebApplication\.idea\libraries\Maven__commons_logging_commons_logging_1_1_1.xml" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Admin\IdeaProjects\TwitterWebApplication\.idea\libraries\Maven__javax_servlet_javax_servlet_api_3_1_0.xml" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Admin\IdeaProjects\TwitterWebApplication\.idea\libraries\Maven__junit_junit_4_11.xml" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Admin\IdeaProjects\TwitterWebApplication\.idea\libraries\Maven__log4j_log4j_1_2_16.xml" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Admin\IdeaProjects\TwitterWebApplication\.idea\libraries\Maven__org_aopalliance_com_springsource_org_aopalliance_1_0_0.xml" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Admin\IdeaProjects\TwitterWebApplication\.idea\libraries\Maven__org_apache_commons_com_springsource_org_apache_commons_logging_1_1_1.xml" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Admin\IdeaProjects\TwitterWebApplication\.idea\libraries\Maven__org_hamcrest_hamcrest_core_1_3.xml" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Admin\IdeaProjects\TwitterWebApplication\.idea\libraries\Maven__org_slf4j_jcl_over_slf4j_1_7_7.xml" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Admin\IdeaProjects\TwitterWebApplication\.idea\libraries\Maven__org_slf4j_slf4j_api_1_7_7.xml" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Admin\IdeaProjects\TwitterWebApplication\.idea\libraries\Maven__org_slf4j_slf4j_log4j12_1_7_7.xml" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Admin\IdeaProjects\TwitterWebApplication\.idea\libraries\Maven__org_slf4j_slf4j_nop_1_7_7.xml" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Admin\IdeaProjects\TwitterWebApplication\.idea\libraries\Maven__org_slf4j_slf4j_simple_1_7_7.xml" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Admin\IdeaProjects\TwitterWebApplication\.idea\libraries\Maven__org_springframework_spring_aop_3_2_2_RELEASE.xml" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Admin\IdeaProjects\TwitterWebApplication\.idea\libraries\Maven__org_springframework_spring_beans_3_2_2_RELEASE.xml" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Admin\IdeaProjects\TwitterWebApplication\.idea\libraries\Maven__org_springframework_spring_context_3_2_2_RELEASE.xml" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Admin\IdeaProjects\TwitterWebApplication\.idea\libraries\Maven__org_springframework_spring_core_3_2_2_RELEASE.xml" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Admin\IdeaProjects\TwitterWebApplication\.idea\libraries\Maven__org_springframework_spring_expression_3_2_2_RELEASE.xml" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Admin\IdeaProjects\TwitterWebApplication\.idea\libraries\Maven__org_springframework_spring_web_3_2_2_RELEASE.xml" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Admin\IdeaProjects\TwitterWebApplication\.idea\libraries\Maven__org_springframework_spring_webmvc_3_2_2_RELEASE.xml" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Admin\IdeaProjects\TwitterWebApplication\.idea\scopes\scope_settings.xml" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Admin\IdeaProjects\TwitterWebApplication\.idea\workspace.xml" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gitignore" afterPath="$PROJECT_DIR$/.gitignore" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="TwitterWebApplication.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -147,8 +124,8 @@
       <file leaf-file-name=".gitignore" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/.gitignore">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.13709678" vertical-offset="0" max-vertical-offset="372">
-              <caret line="3" column="4" selection-start-line="3" selection-start-column="4" selection-end-line="3" selection-end-column="4" />
+            <state vertical-scroll-proportion="0.09139785" vertical-offset="0" max-vertical-offset="372">
+              <caret line="2" column="0" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -875,7 +852,7 @@
       <workItem from="1404986912666" duration="25000" />
       <workItem from="1404991019039" duration="970000" />
       <workItem from="1404992039656" duration="817000" />
-      <workItem from="1404993018888" duration="1066000" />
+      <workItem from="1404993018888" duration="1112000" />
     </task>
     <task id="LOCAL-00001" summary="Added UserConroller, Post Controller to handle user interactions, jsp pages for CRUD users, posts&#10;">
       <created>1402592764875</created>
@@ -965,11 +942,15 @@
       <created>1404994021061</created>
       <updated>1404994021061</updated>
     </task>
-    <option name="localTasksCounter" value="23" />
+    <task id="LOCAL-00023" summary="Deleted unnecessary folders">
+      <created>1404994111670</created>
+      <updated>1404994111670</updated>
+    </task>
+    <option name="localTasksCounter" value="24" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="290883000" />
+    <option name="totallyTimeSpent" value="290929000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="1" y="1" width="1302" height="766" extended-state="0" />
@@ -1459,8 +1440,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/.gitignore">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.13709678" vertical-offset="0" max-vertical-offset="372">
-          <caret line="3" column="4" selection-start-line="3" selection-start-column="4" selection-end-line="3" selection-end-column="4" />
+        <state vertical-scroll-proportion="0.09139785" vertical-offset="0" max-vertical-offset="372">
+          <caret line="2" column="0" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
           <folding />
         </state>
       </provider>
