@@ -34,7 +34,8 @@ public class UserQueriesController {
     public
     @ResponseBody
     List<User> getAllUsers() {
-        return userService.findAll();
+        List<User> users = userService.findAll();
+        return users;
     }
 
     //curl -H Accept:application/json http://localhost:8080/rest/users/3

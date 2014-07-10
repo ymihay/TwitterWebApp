@@ -1,10 +1,14 @@
 package core.domain;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import org.springframework.hateoas.ResourceSupport;
+import web.rest.home.user.UserQueriesController;
 
 import java.io.Serializable;
 import java.sql.Timestamp;
 import java.util.List;
+
+import static org.springframework.hateoas.mvc.ControllerLinkBuilder.linkTo;
 
 /**
  * Created with IntelliJ IDEA.
@@ -14,7 +18,7 @@ import java.util.List;
  * To change this template use File | Settings | File Templates.
  */
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class User implements Serializable {
+public class User extends ResourceSupport implements Serializable {
     private Integer userId;
     private String firstName;
     private String patronymic;
@@ -46,6 +50,8 @@ public class User implements Serializable {
 
     public void setUserId(Integer userId) {
         this.userId = userId;
+        //this.add(linkTo(methodOn(UserQueriesController.class).getUserById(userId)).withSelfRel());
+        this.add(linkTo(UserQueriesController.class).slash(userId).withSelfRel());
     }
 
     public String getFirstName() {
