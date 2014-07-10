@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="PublishConfigData" serverName="https://github.com/ymihay/TwitterWebApp" uploadOnCheckin="7b681139-a5c8-485e-9152-6112ec8ac91c">
+    <serverData>
+      <paths name="https://github.com/ymihay/TwitterWebApp">
+        <serverdata>
+          <mappings>
+            <mapping local="$PROJECT_DIR$" web="https://github.com/ymihay/TwitterWebApp" />
+          </mappings>
+        </serverdata>
+      </paths>
+    </serverData>
+    <option name="myUploadOnCheckinName" value="https://github.com/ymihay/TwitterWebApp" />
+  </component>
+</project>
+
