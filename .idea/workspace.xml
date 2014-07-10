@@ -1,23 +1,141 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="65b13acd-b200-456f-8cbd-16c0cfa87dfb" name="Default" comment="Deleted unnecessary">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/.name" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/artifacts/TwitterWebApplication_war.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/artifacts/TwitterWebApplication_war_exploded.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/compiler.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/copyright/profiles_settings.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/deployment.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/encodings.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/modules.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/scopes/scope_settings.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/vcs.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/upload.py" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Admin\IdeaProjects\TwitterWebApplication\FrontControllerServlet-servlet.xml" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Admin\IdeaProjects\TwitterWebApplication\TwitterWebApplication.iml" afterPath="" />
+    <list default="true" id="65b13acd-b200-456f-8cbd-16c0cfa87dfb" name="Default" comment="Deleted unnecessary folders">
+      <change type="DELETED" beforePath="C:\Users\Admin\IdeaProjects\TwitterWebApplication\target\TwitterWebApplication.war" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Admin\IdeaProjects\TwitterWebApplication\target\TwitterWebApplication\WEB-INF\classes\config\CoreConfig.class" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Admin\IdeaProjects\TwitterWebApplication\target\TwitterWebApplication\WEB-INF\classes\config\MvcConfig.class" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Admin\IdeaProjects\TwitterWebApplication\target\TwitterWebApplication\WEB-INF\classes\config\RestWebConfig.class" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Admin\IdeaProjects\TwitterWebApplication\target\TwitterWebApplication\WEB-INF\classes\config\WebAppInitializer.class" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Admin\IdeaProjects\TwitterWebApplication\target\TwitterWebApplication\WEB-INF\classes\core\domain\Country.class" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Admin\IdeaProjects\TwitterWebApplication\target\TwitterWebApplication\WEB-INF\classes\core\domain\Post.class" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Admin\IdeaProjects\TwitterWebApplication\target\TwitterWebApplication\WEB-INF\classes\core\domain\Sex.class" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Admin\IdeaProjects\TwitterWebApplication\target\TwitterWebApplication\WEB-INF\classes\core\domain\User.class" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Admin\IdeaProjects\TwitterWebApplication\target\TwitterWebApplication\WEB-INF\classes\core\repository\country\CountryDAO.class" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Admin\IdeaProjects\TwitterWebApplication\target\TwitterWebApplication\WEB-INF\classes\core\repository\country\CountryDAOJDBC.class" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Admin\IdeaProjects\TwitterWebApplication\target\TwitterWebApplication\WEB-INF\classes\core\repository\jdbc\ConnectionFactory.class" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Admin\IdeaProjects\TwitterWebApplication\target\TwitterWebApplication\WEB-INF\classes\core\repository\jdbc\DAOJDBCUtil.class" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Admin\IdeaProjects\TwitterWebApplication\target\TwitterWebApplication\WEB-INF\classes\core\repository\jdbc\DriverManagerDAOJDBC.class" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Admin\IdeaProjects\TwitterWebApplication\target\TwitterWebApplication\WEB-INF\classes\core\repository\post\PostDAO.class" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Admin\IdeaProjects\TwitterWebApplication\target\TwitterWebApplication\WEB-INF\classes\core\repository\post\PostDAOJDBC.class" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Admin\IdeaProjects\TwitterWebApplication\target\TwitterWebApplication\WEB-INF\classes\core\repository\sex\SexDAO.class" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Admin\IdeaProjects\TwitterWebApplication\target\TwitterWebApplication\WEB-INF\classes\core\repository\sex\SexDAOJDBC.class" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Admin\IdeaProjects\TwitterWebApplication\target\TwitterWebApplication\WEB-INF\classes\core\repository\user\UserDAO.class" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Admin\IdeaProjects\TwitterWebApplication\target\TwitterWebApplication\WEB-INF\classes\core\repository\user\UserDAOJDBC.class" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Admin\IdeaProjects\TwitterWebApplication\target\TwitterWebApplication\WEB-INF\classes\core\service\country\CountryService.class" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Admin\IdeaProjects\TwitterWebApplication\target\TwitterWebApplication\WEB-INF\classes\core\service\country\CountryServiceImpl.class" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Admin\IdeaProjects\TwitterWebApplication\target\TwitterWebApplication\WEB-INF\classes\core\service\post\PostService.class" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Admin\IdeaProjects\TwitterWebApplication\target\TwitterWebApplication\WEB-INF\classes\core\service\post\PostServiceImpl.class" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Admin\IdeaProjects\TwitterWebApplication\target\TwitterWebApplication\WEB-INF\classes\core\service\sex\SexService.class" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Admin\IdeaProjects\TwitterWebApplication\target\TwitterWebApplication\WEB-INF\classes\core\service\sex\SexServiceImpl.class" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Admin\IdeaProjects\TwitterWebApplication\target\TwitterWebApplication\WEB-INF\classes\core\service\user\UserService.class" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Admin\IdeaProjects\TwitterWebApplication\target\TwitterWebApplication\WEB-INF\classes\core\service\user\UserServiceImpl.class" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Admin\IdeaProjects\TwitterWebApplication\target\TwitterWebApplication\WEB-INF\classes\jdbc.properties" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Admin\IdeaProjects\TwitterWebApplication\target\TwitterWebApplication\WEB-INF\classes\persistenceContext.xml" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Admin\IdeaProjects\TwitterWebApplication\target\TwitterWebApplication\WEB-INF\classes\web\mvc\post\PostCommandsController.class" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Admin\IdeaProjects\TwitterWebApplication\target\TwitterWebApplication\WEB-INF\classes\web\mvc\post\PostQueriesController.class" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Admin\IdeaProjects\TwitterWebApplication\target\TwitterWebApplication\WEB-INF\classes\web\mvc\user\UserCommandsController.class" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Admin\IdeaProjects\TwitterWebApplication\target\TwitterWebApplication\WEB-INF\classes\web\mvc\user\UserQueriesController.class" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Admin\IdeaProjects\TwitterWebApplication\target\TwitterWebApplication\WEB-INF\classes\web\mvc\user\UserSubscriptionCommandsController.class" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Admin\IdeaProjects\TwitterWebApplication\target\TwitterWebApplication\WEB-INF\classes\web\rest\follower\FollowerQueriesController.class" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Admin\IdeaProjects\TwitterWebApplication\target\TwitterWebApplication\WEB-INF\classes\web\rest\friend\FriendCommandsController.class" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Admin\IdeaProjects\TwitterWebApplication\target\TwitterWebApplication\WEB-INF\classes\web\rest\friend\FriendQueriesController.class" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Admin\IdeaProjects\TwitterWebApplication\target\TwitterWebApplication\WEB-INF\classes\web\rest\home\post\PostCommandsController.class" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Admin\IdeaProjects\TwitterWebApplication\target\TwitterWebApplication\WEB-INF\classes\web\rest\home\post\PostQueriesController.class" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Admin\IdeaProjects\TwitterWebApplication\target\TwitterWebApplication\WEB-INF\classes\web\rest\home\user\UserCommandsController.class" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Admin\IdeaProjects\TwitterWebApplication\target\TwitterWebApplication\WEB-INF\classes\web\rest\home\user\UserQueriesController.class" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Admin\IdeaProjects\TwitterWebApplication\target\TwitterWebApplication\WEB-INF\classes\web\rest\search\SearchQueriesController.class" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Admin\IdeaProjects\TwitterWebApplication\target\TwitterWebApplication\WEB-INF\classes\web\usermanager\AuthenticationInterceptor.class" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Admin\IdeaProjects\TwitterWebApplication\target\TwitterWebApplication\WEB-INF\classes\web\usermanager\LoginController.class" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Admin\IdeaProjects\TwitterWebApplication\target\TwitterWebApplication\WEB-INF\classes\web\usermanager\UserManager.class" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Admin\IdeaProjects\TwitterWebApplication\target\TwitterWebApplication\WEB-INF\classes\web\usermanager\UserManagerImpl.class" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Admin\IdeaProjects\TwitterWebApplication\target\TwitterWebApplication\WEB-INF\index.jsp" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Admin\IdeaProjects\TwitterWebApplication\target\TwitterWebApplication\WEB-INF\lib\aopalliance-1.0.jar" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Admin\IdeaProjects\TwitterWebApplication\target\TwitterWebApplication\WEB-INF\lib\commons-logging-1.1.1.jar" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Admin\IdeaProjects\TwitterWebApplication\target\TwitterWebApplication\WEB-INF\lib\jackson-annotations-2.3.3.jar" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Admin\IdeaProjects\TwitterWebApplication\target\TwitterWebApplication\WEB-INF\lib\jackson-core-2.3.3.jar" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Admin\IdeaProjects\TwitterWebApplication\target\TwitterWebApplication\WEB-INF\lib\jackson-databind-2.3.3.jar" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Admin\IdeaProjects\TwitterWebApplication\target\TwitterWebApplication\WEB-INF\lib\javax.servlet-api-3.1.0.jar" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Admin\IdeaProjects\TwitterWebApplication\target\TwitterWebApplication\WEB-INF\lib\jaxb-api-2.2.11.jar" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Admin\IdeaProjects\TwitterWebApplication\target\TwitterWebApplication\WEB-INF\lib\jcl-over-slf4j-1.7.7.jar" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Admin\IdeaProjects\TwitterWebApplication\target\TwitterWebApplication\WEB-INF\lib\log4j-1.2.16.jar" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Admin\IdeaProjects\TwitterWebApplication\target\TwitterWebApplication\WEB-INF\lib\slf4j-api-1.7.7.jar" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Admin\IdeaProjects\TwitterWebApplication\target\TwitterWebApplication\WEB-INF\lib\slf4j-log4j12-1.7.7.jar" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Admin\IdeaProjects\TwitterWebApplication\target\TwitterWebApplication\WEB-INF\lib\slf4j-nop-1.7.7.jar" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Admin\IdeaProjects\TwitterWebApplication\target\TwitterWebApplication\WEB-INF\lib\slf4j-simple-1.7.7.jar" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Admin\IdeaProjects\TwitterWebApplication\target\TwitterWebApplication\WEB-INF\lib\spring-aop-3.2.2.RELEASE.jar" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Admin\IdeaProjects\TwitterWebApplication\target\TwitterWebApplication\WEB-INF\lib\spring-beans-3.2.2.RELEASE.jar" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Admin\IdeaProjects\TwitterWebApplication\target\TwitterWebApplication\WEB-INF\lib\spring-context-3.2.2.RELEASE.jar" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Admin\IdeaProjects\TwitterWebApplication\target\TwitterWebApplication\WEB-INF\lib\spring-core-3.2.2.RELEASE.jar" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Admin\IdeaProjects\TwitterWebApplication\target\TwitterWebApplication\WEB-INF\lib\spring-expression-3.2.2.RELEASE.jar" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Admin\IdeaProjects\TwitterWebApplication\target\TwitterWebApplication\WEB-INF\lib\spring-web-3.2.2.RELEASE.jar" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Admin\IdeaProjects\TwitterWebApplication\target\TwitterWebApplication\WEB-INF\lib\spring-webmvc-3.2.2.RELEASE.jar" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Admin\IdeaProjects\TwitterWebApplication\target\TwitterWebApplication\WEB-INF\static\js\login\ajaxQueries" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Admin\IdeaProjects\TwitterWebApplication\target\TwitterWebApplication\WEB-INF\view\authentication\login.jsp" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Admin\IdeaProjects\TwitterWebApplication\target\TwitterWebApplication\WEB-INF\view\error\error.jsp" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Admin\IdeaProjects\TwitterWebApplication\target\TwitterWebApplication\WEB-INF\view\footer\footer.jsp" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Admin\IdeaProjects\TwitterWebApplication\target\TwitterWebApplication\WEB-INF\view\footer\pagination.jsp" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Admin\IdeaProjects\TwitterWebApplication\target\TwitterWebApplication\WEB-INF\view\header\header.jsp" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Admin\IdeaProjects\TwitterWebApplication\target\TwitterWebApplication\WEB-INF\view\menu\menu.jsp" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Admin\IdeaProjects\TwitterWebApplication\target\TwitterWebApplication\WEB-INF\view\post\modifypost.jsp" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Admin\IdeaProjects\TwitterWebApplication\target\TwitterWebApplication\WEB-INF\view\post\viewposts.jsp" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Admin\IdeaProjects\TwitterWebApplication\target\TwitterWebApplication\WEB-INF\view\search\nohits.jsp" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Admin\IdeaProjects\TwitterWebApplication\target\TwitterWebApplication\WEB-INF\view\search\searchpost.jsp" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Admin\IdeaProjects\TwitterWebApplication\target\TwitterWebApplication\WEB-INF\view\search\searchuser.jsp" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Admin\IdeaProjects\TwitterWebApplication\target\TwitterWebApplication\WEB-INF\view\user\modifyuser.jsp" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Admin\IdeaProjects\TwitterWebApplication\target\TwitterWebApplication\WEB-INF\view\user\viewuser.jsp" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Admin\IdeaProjects\TwitterWebApplication\target\TwitterWebApplication\WEB-INF\view\user\viewusers.jsp" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Admin\IdeaProjects\TwitterWebApplication\target\TwitterWebApplication\WEB-INF\web.xml" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Admin\IdeaProjects\TwitterWebApplication\target\classes\config\CoreConfig.class" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Admin\IdeaProjects\TwitterWebApplication\target\classes\config\MvcConfig.class" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Admin\IdeaProjects\TwitterWebApplication\target\classes\config\RestWebConfig.class" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Admin\IdeaProjects\TwitterWebApplication\target\classes\config\WebAppInitializer.class" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Admin\IdeaProjects\TwitterWebApplication\target\classes\core\domain\Country.class" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Admin\IdeaProjects\TwitterWebApplication\target\classes\core\domain\Post.class" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Admin\IdeaProjects\TwitterWebApplication\target\classes\core\domain\Sex.class" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Admin\IdeaProjects\TwitterWebApplication\target\classes\core\domain\User.class" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Admin\IdeaProjects\TwitterWebApplication\target\classes\core\repository\country\CountryDAO.class" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Admin\IdeaProjects\TwitterWebApplication\target\classes\core\repository\country\CountryDAOJDBC.class" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Admin\IdeaProjects\TwitterWebApplication\target\classes\core\repository\jdbc\ConnectionFactory.class" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Admin\IdeaProjects\TwitterWebApplication\target\classes\core\repository\jdbc\DAOJDBCUtil.class" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Admin\IdeaProjects\TwitterWebApplication\target\classes\core\repository\jdbc\DriverManagerDAOJDBC.class" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Admin\IdeaProjects\TwitterWebApplication\target\classes\core\repository\post\PostDAO.class" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Admin\IdeaProjects\TwitterWebApplication\target\classes\core\repository\post\PostDAOJDBC.class" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Admin\IdeaProjects\TwitterWebApplication\target\classes\core\repository\sex\SexDAO.class" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Admin\IdeaProjects\TwitterWebApplication\target\classes\core\repository\sex\SexDAOJDBC.class" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Admin\IdeaProjects\TwitterWebApplication\target\classes\core\repository\user\UserDAO.class" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Admin\IdeaProjects\TwitterWebApplication\target\classes\core\repository\user\UserDAOJDBC.class" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Admin\IdeaProjects\TwitterWebApplication\target\classes\core\service\country\CountryService.class" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Admin\IdeaProjects\TwitterWebApplication\target\classes\core\service\country\CountryServiceImpl.class" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Admin\IdeaProjects\TwitterWebApplication\target\classes\core\service\post\PostService.class" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Admin\IdeaProjects\TwitterWebApplication\target\classes\core\service\post\PostServiceImpl.class" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Admin\IdeaProjects\TwitterWebApplication\target\classes\core\service\sex\SexService.class" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Admin\IdeaProjects\TwitterWebApplication\target\classes\core\service\sex\SexServiceImpl.class" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Admin\IdeaProjects\TwitterWebApplication\target\classes\core\service\user\UserService.class" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Admin\IdeaProjects\TwitterWebApplication\target\classes\core\service\user\UserServiceImpl.class" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Admin\IdeaProjects\TwitterWebApplication\target\classes\jdbc.properties" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Admin\IdeaProjects\TwitterWebApplication\target\classes\persistenceContext.xml" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Admin\IdeaProjects\TwitterWebApplication\target\classes\web\mvc\post\PostCommandsController.class" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Admin\IdeaProjects\TwitterWebApplication\target\classes\web\mvc\post\PostQueriesController.class" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Admin\IdeaProjects\TwitterWebApplication\target\classes\web\mvc\user\UserCommandsController.class" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Admin\IdeaProjects\TwitterWebApplication\target\classes\web\mvc\user\UserQueriesController.class" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Admin\IdeaProjects\TwitterWebApplication\target\classes\web\mvc\user\UserSubscriptionCommandsController.class" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Admin\IdeaProjects\TwitterWebApplication\target\classes\web\rest\follower\FollowerQueriesController.class" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Admin\IdeaProjects\TwitterWebApplication\target\classes\web\rest\friend\FriendCommandsController.class" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Admin\IdeaProjects\TwitterWebApplication\target\classes\web\rest\friend\FriendQueriesController.class" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Admin\IdeaProjects\TwitterWebApplication\target\classes\web\rest\home\post\PostCommandsController.class" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Admin\IdeaProjects\TwitterWebApplication\target\classes\web\rest\home\post\PostQueriesController.class" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Admin\IdeaProjects\TwitterWebApplication\target\classes\web\rest\home\user\UserCommandsController.class" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Admin\IdeaProjects\TwitterWebApplication\target\classes\web\rest\home\user\UserQueriesController.class" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Admin\IdeaProjects\TwitterWebApplication\target\classes\web\rest\search\SearchQueriesController.class" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Admin\IdeaProjects\TwitterWebApplication\target\classes\web\usermanager\AuthenticationInterceptor.class" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Admin\IdeaProjects\TwitterWebApplication\target\classes\web\usermanager\LoginController.class" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Admin\IdeaProjects\TwitterWebApplication\target\classes\web\usermanager\UserManager.class" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Admin\IdeaProjects\TwitterWebApplication\target\classes\web\usermanager\UserManagerImpl.class" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Admin\IdeaProjects\TwitterWebApplication\target\test-classes\persistenceContextTest.xml" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Admin\IdeaProjects\TwitterWebApplication\target\test-classes\schema.sql" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Admin\IdeaProjects\TwitterWebApplication\upload.py" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="TwitterWebApplication.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -856,7 +974,7 @@
       <workItem from="1404986912666" duration="25000" />
       <workItem from="1404991019039" duration="970000" />
       <workItem from="1404992039656" duration="817000" />
-      <workItem from="1404993018888" duration="778000" />
+      <workItem from="1404993018888" duration="908000" />
     </task>
     <task id="LOCAL-00001" summary="Added UserConroller, Post Controller to handle user interactions, jsp pages for CRUD users, posts&#10;">
       <created>1402592764875</created>
@@ -934,11 +1052,15 @@
       <created>1404993747668</created>
       <updated>1404993747668</updated>
     </task>
-    <option name="localTasksCounter" value="20" />
+    <task id="LOCAL-00020" summary="Deleted unnecessary folders">
+      <created>1404993835630</created>
+      <updated>1404993835630</updated>
+    </task>
+    <option name="localTasksCounter" value="21" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="290595000" />
+    <option name="totallyTimeSpent" value="290725000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="1" y="1" width="1302" height="766" extended-state="0" />
@@ -1046,7 +1168,8 @@
     <MESSAGE value="Delete lib from repository" />
     <MESSAGE value="Updated pom.xml with full lst dependencies" />
     <MESSAGE value="Added folders to git ignore" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added folders to git ignore" />
+    <MESSAGE value="Deleted unnecessary folders" />
+    <option name="LAST_COMMIT_MESSAGE" value="Deleted unnecessary folders" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
@@ -1114,9 +1237,9 @@
         <state vertical-scroll-proportion="0.6165413" vertical-offset="1063" max-vertical-offset="1462">
           <caret line="106" column="0" selection-start-line="106" selection-start-column="0" selection-end-line="106" selection-end-column="0" />
           <folding>
-            <element signature="e#2500#2501#0" expanded="true" />
-            <element signature="e#2546#2547#0" expanded="true" />
-            <element signature="e#2746#2747#0" expanded="true" />
+            <element signature="e#2500#2501#0" expanded="false" />
+            <element signature="e#2546#2547#0" expanded="false" />
+            <element signature="e#2746#2747#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1311,7 +1434,7 @@
         <state vertical-scroll-proportion="0.3315508" vertical-offset="3378" max-vertical-offset="9690">
           <caret line="208" column="71" selection-start-line="208" selection-start-column="60" selection-end-line="208" selection-end-column="71" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="imports" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1328,7 +1451,7 @@
         <state vertical-scroll-proportion="-12.44" vertical-offset="1814" max-vertical-offset="11220">
           <caret line="125" column="78" selection-start-line="125" selection-start-column="78" selection-end-line="125" selection-end-column="78" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="imports" expanded="false" />
           </folding>
         </state>
       </provider>

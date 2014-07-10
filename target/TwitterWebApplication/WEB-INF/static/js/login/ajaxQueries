@@ -1,8 +1,0 @@
-jQuery("#users").bind("onclick", function () {
-    jQuery.ajax({
-        url: "/rest/users/",
-        context: document.body
-    }).done(function () {
-        $(this).addClass("done");
-    });
-});
