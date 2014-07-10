@@ -27,5 +27,4 @@ public class RestWebConfig {
         jsonConverter.setSupportedMediaTypes(mediaTypes);
         return jsonConverter;
     }
-
 }

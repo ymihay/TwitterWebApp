@@ -2,9 +2,8 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" errorPage="/WEB-INF/view/error/error.jsp" %>
 <jsp:include page="/WEB-INF/view/header/header.jsp"></jsp:include>
+<script type="javascript" language="javascript" src="/static/js/login/ajaxQueries"></script>
+<button value="button" id="users">Users</button>
 
-Click to <a href="<c:url value="/pages/logout"/>">log out</a>
-
-<h1><a href="<c:url value="/pages/register"/>">Please register here </a></h1>
 
 <jsp:include page="/WEB-INF/view/footer/footer.jsp"></jsp:include>
