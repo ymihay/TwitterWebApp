@@ -28,7 +28,7 @@ public class UserQueriesController {
     @Autowired
     private UserManager userManager;
 
-    //curl -H Accept:application/json http://localhost:8080/rest/users
+
     @ResponseStatus(HttpStatus.OK)
     public
     @ResponseBody
