@@ -2,9 +2,12 @@ package config;
 
 import core.repository.jdbc.ConnectionFactory;
 import core.repository.jdbc.DriverManagerDAOJDBC;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.PropertySource;
+import org.springframework.context.support.PropertySourcesPlaceholderConfigurer;
 
 import java.sql.SQLException;
 
@@ -13,20 +16,38 @@ import java.sql.SQLException;
  */
 @Configuration
 @ComponentScan(basePackages = {"core.repository", "core.service", "core.domain"})
-//@PropertySource("classpath:/main/resources/jdbc.properties")
+@PropertySource("classpath:jdbc.properties")
 public class CoreConfig {
-    //@Autowired
-    //Environment env;
+
+    @Value("${driver}")
+    private String driver;
+
+    @Value("${user}")
+    private String user;
+
+    @Value("${password}")
+    private String password;
+
+    @Value("${url}")
+    private String url;
+
+    @Value("${poolSize}")
+    private Integer poolSize;
+
+
+    @Bean
+    public static PropertySourcesPlaceholderConfigurer properties() {
+        return new PropertySourcesPlaceholderConfigurer();
+    }
 
     @Bean(initMethod = "createConnectionPool", destroyMethod = "closeAllConnections")
     public ConnectionFactory createDriverManagerDAO() throws SQLException, InterruptedException {
-        // TODO: use property bean instead explicit assigning
         DriverManagerDAOJDBC driverManager = new DriverManagerDAOJDBC();
-        driverManager.setDriver("oracle.jdbc.OracleDriver");
-        driverManager.setPassword("Tamvisoko111");
-        driverManager.setPoolSize(10);
-        driverManager.setUrl("jdbc:oracle:thin:@127.0.0.1:1521:XE");
-        driverManager.setUser("TWITTER_ADM");
+        driverManager.setDriver(driver);
+        driverManager.setPassword(password);
+        driverManager.setPoolSize(poolSize);
+        driverManager.setUrl(url);
+        driverManager.setUser(user);
         return driverManager;
     }
 }
