@@ -1,7 +1,8 @@
-package repository;
+package core.repository.sex;
 
-import repository.sex.SexDAO;
-import domain.Sex;
+
+import core.domain.Sex;
+import core.repository.DAOTestTemplate;
 import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
@@ -33,13 +34,13 @@ public class SexDAOJDBCTest extends DAOTestTemplate {
 
     @Test
     public void testCreateSexNoException() throws Exception {
-        Sex sex = new Sex("male");
+        Sex sex = new Sex(1, "male");
         sexDAO.create(sex);
     }
 
     @Test
     public void testCreateSexSingle() throws Exception {
-        Sex sex = new Sex("Male");
+        Sex sex = new Sex(1, "Male");
         sexDAO.create(sex);
         int size = jdbcTemplate.queryForObject("select count(*) from twt_sex", Integer.class);
 
@@ -48,7 +49,7 @@ public class SexDAOJDBCTest extends DAOTestTemplate {
 
     @Test
     public void testFindByName() throws Exception {
-        Sex expectedSex = new Sex("male");
+        Sex expectedSex = new Sex(1, "male");
         sexDAO.create(expectedSex);
         Sex actualSex = sexDAO.find("male");
 
@@ -57,7 +58,7 @@ public class SexDAOJDBCTest extends DAOTestTemplate {
 
     @Test
     public void testFindById() throws Exception {
-        Sex expectedSex = new Sex("male");
+        Sex expectedSex = new Sex(1, "male");
         sexDAO.create(expectedSex);
         Sex sex = sexDAO.find("male");
 
@@ -69,8 +70,8 @@ public class SexDAOJDBCTest extends DAOTestTemplate {
 
     @Test
     public void testFindAll() throws Exception {
-        Sex sexFirst = new Sex("male");
-        Sex sexSecond = new Sex("USA");
+        Sex sexFirst = new Sex(1, "male");
+        Sex sexSecond = new Sex(2, "female");
         sexDAO.create(sexFirst);
         sexDAO.create(sexSecond);
         List<Sex> actualResult = sexDAO.findAll();

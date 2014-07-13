@@ -1,9 +1,9 @@
-package repository;
+package core.repository.user;
 
-import repository.user.UserDAO;
-import domain.Country;
-import domain.Sex;
-import domain.User;
+import core.domain.Country;
+import core.domain.Sex;
+import core.domain.User;
+import core.repository.DAOTestTemplate;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -162,7 +162,7 @@ public class UserDAOJDBCTest extends DAOTestTemplate {
 
     @Test
     public void testSetSubscription() throws Exception {
-       setUserSubscribed();
+        setUserSubscribed();
         int size = jdbcTemplate.queryForObject("select count(*) from twt_subscription where sys_delstate=0", Integer.class);
 
         Assert.assertEquals("set subscription. Row was created in db", 1, size);
@@ -172,12 +172,13 @@ public class UserDAOJDBCTest extends DAOTestTemplate {
     public void testSetSubscriptionUser() throws Exception {
         setUserSubscribed();
         int size = jdbcTemplate.queryForObject("select count(*)\n" +
-                "  from twt_subscription\n" +
-                " where user_id in (select id from twt_user where login like 'loginFirst')\n" +
-                "   and subscribed_on_user_id in\n" +
-                "       (select id from twt_user where login like 'loginSecond')\n" +
-                "   and sys_delstate = 0\n",
-                Integer.class);
+                        "  from twt_subscription\n" +
+                        " where user_id in (select id from twt_user where login like 'loginFirst')\n" +
+                        "   and subscribed_on_user_id in\n" +
+                        "       (select id from twt_user where login like 'loginSecond')\n" +
+                        "   and sys_delstate = 0\n",
+                Integer.class
+        );
 
         Assert.assertEquals("set subscription. subscription was set correctly.", 1, size);
     }
@@ -235,7 +236,8 @@ public class UserDAOJDBCTest extends DAOTestTemplate {
         Assert.assertEquals("findSubscribedOnUser. Row was found in db", 1, users.size());
     }
 
-    @Test    public void testFindSubscriptionsTheSame() throws Exception {
+    @Test
+    public void testFindSubscriptionsTheSame() throws Exception {
         User userFirst = new User("loginFirst", "passwordFirst");
         User userSecond = new User("loginSecond", "passwordSecond");
         userDAO.create(userFirst);

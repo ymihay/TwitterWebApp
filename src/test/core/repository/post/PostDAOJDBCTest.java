@@ -1,9 +1,9 @@
-package repository;
+package core.repository.post;
 
-import repository.post.PostDAO;
-import repository.user.UserDAO;
-import domain.Post;
-import domain.User;
+import core.domain.Post;
+import core.domain.User;
+import core.repository.DAOTestTemplate;
+import core.repository.user.UserDAO;
 import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
@@ -30,6 +30,7 @@ public class PostDAOJDBCTest extends DAOTestTemplate {
     @Before
     public void clearDB() throws Exception {
         jdbcTemplate.execute("TRUNCATE TABLE twt_post");
+        jdbcTemplate.execute("TRUNCATE TABLE twt_user");
         userFirst = new User("login", "pswd");
         userFirst.setUserId(1);
         userSecond = new User("testUser", "password");
@@ -163,10 +164,11 @@ public class PostDAOJDBCTest extends DAOTestTemplate {
 
     @Test
     public void testFindAvailablePostsSeveralRowsCreated() throws Exception {
-        userDAO.setSubscription("login", "testUser");
+
         postDAO.create(new Post("textUserFirst", userFirst));
         postDAO.create(new Post("textUserSecond", userSecond));
         postDAO.create(new Post("test", userSecond));
+        userDAO.setSubscription("login", "testUser");
         List<Post> posts = postDAO.findAvailablePosts("testUser");
 
         Assert.assertEquals("FindAvailablePosts. Row was found in db", 2, posts.size());

@@ -1,6 +1,4 @@
-package repository;
-
-import repository.jdbc.ConnectionFactory;
+package core.repository.jdbc;
 
 import javax.sql.DataSource;
 import java.sql.Connection;
