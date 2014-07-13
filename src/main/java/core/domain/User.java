@@ -2,13 +2,10 @@ package core.domain;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import org.springframework.hateoas.ResourceSupport;
-import web.rest.home.user.UserQueriesController;
 
 import java.io.Serializable;
 import java.sql.Timestamp;
 import java.util.List;
-
-import static org.springframework.hateoas.mvc.ControllerLinkBuilder.linkTo;
 
 /**
  * Created with IntelliJ IDEA.
@@ -50,9 +47,9 @@ public class User extends ResourceSupport implements Serializable {
 
     public void setUserId(Integer userId) {
         this.userId = userId;
-        //this.add(linkTo(methodOn(UserQueriesController.class).getUserById(userId)).withSelfRel());
-        this.add(linkTo(UserQueriesController.class).slash(userId).withSelfRel());
+        //this.add(linkTo(methodOn(UserQueriesController.class).getAllUsers()).withSelfRel());
     }
+
 
     public String getFirstName() {
         return firstName;

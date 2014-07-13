@@ -46,7 +46,7 @@ public class RestWebConfig extends WebMvcConfigurerAdapter {
         return jsonConverter;
     }
 
-    @Bean
+
     public static <T> T retrieveResourceFromResponse(HttpResponse response, Class<T> clazz)
             throws IOException {
         String jsonFromResponse = EntityUtils.toString(response.getEntity());

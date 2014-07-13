@@ -38,6 +38,17 @@ public class UserQueriesController {
         return users;
     }
 
+    /*@RequestMapping
+    @ResponseStatus(HttpStatus.OK)
+    public
+    @ResponseBody
+    List<User> getAllUsersPaginated(@RequestParam("page") final int page, @RequestParam("size") final int size,
+                                    final UriComponentsBuilder uriBuilder) {
+        List<User> users = userService.findAll();
+        //final Page<User> resultPage = userService.findservice.findPaginated(page, size);
+        return users;
+    }*/
+
     //curl -H Accept:application/json http://localhost:8080/rest/users/3
     @RequestMapping(value = "/{id}",
             headers = "Accept=application/json")
