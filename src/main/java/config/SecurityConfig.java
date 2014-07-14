@@ -7,6 +7,9 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.config.annotation.web.servlet.configuration.EnableWebMvcSecurity;
 
+import javax.sql.DataSource;
+
+
 /**
  * Created by Admin on 13.07.2014.
  */
@@ -14,11 +17,23 @@ import org.springframework.security.config.annotation.web.servlet.configuration.
 @EnableWebMvcSecurity
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
+    private static final String userByNameSql = "select login as username, password, 1 as enabled\n" +
+            "  from twt_user\n" +
+            " where sys_delstate = 0\n" +
+            "   and login = ?\n";
+
+    private static final String roleByNameSql = "select ? as username, 'ROLE_USER' as role from dual";
+
+    @Autowired
+    DataSource dataSource;
+
     @Autowired
     public void registerGlobalAuthentication(AuthenticationManagerBuilder auth) throws Exception {
         auth
-                .inMemoryAuthentication()
-                .withUser("user").password("password").roles("USER");
+                .jdbcAuthentication()
+                .dataSource(dataSource)
+                .usersByUsernameQuery(userByNameSql)
+                .authoritiesByUsernameQuery(roleByNameSql);
     }
 
     @Override
@@ -29,9 +44,12 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .anyRequest().authenticated()
                 .and()
                 .formLogin()
-                .loginPage("/rest/login")
+                .loginPage("/rest/login").failureUrl("/rest/login?error")
                 .defaultSuccessUrl("/rest/users/")
+                .usernameParameter("username").passwordParameter("password")
                 .permitAll()
+                .and()
+                .csrf()
                 .and()
                 .logout()
                 .permitAll();
