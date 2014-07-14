@@ -2,10 +2,15 @@ package core.domain;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import org.springframework.hateoas.ResourceSupport;
+import web.rest.friend.FriendQueriesController;
+import web.rest.home.user.UserQueriesController;
 
 import java.io.Serializable;
 import java.sql.Timestamp;
 import java.util.List;
+
+import static org.springframework.hateoas.mvc.ControllerLinkBuilder.linkTo;
+import static org.springframework.hateoas.mvc.ControllerLinkBuilder.methodOn;
 
 /**
  * Created with IntelliJ IDEA.
@@ -47,9 +52,8 @@ public class User extends ResourceSupport implements Serializable {
 
     public void setUserId(Integer userId) {
         this.userId = userId;
-        //this.add(linkTo(methodOn(UserQueriesController.class).getAllUsers()).withSelfRel());
+        this.add(linkTo(methodOn(UserQueriesController.class).getUserById(userId)).withSelfRel());
     }
-
 
     public String getFirstName() {
         return firstName;
@@ -121,6 +125,7 @@ public class User extends ResourceSupport implements Serializable {
 
     public void setSubscribedList(List<User> subscribedList) {
         this.subscribedList = subscribedList;
+        this.add(linkTo(methodOn(FriendQueriesController.class).getFriends(this.userId)).withSelfRel());
     }
 
     public List<User> getSubscribedOnUserList() {
@@ -129,6 +134,7 @@ public class User extends ResourceSupport implements Serializable {
 
     public void setSubscribedOnUserList(List<User> subscribedOnUserList) {
         this.subscribedOnUserList = subscribedOnUserList;
+
     }
 
     public List<Post> getPostList() {
