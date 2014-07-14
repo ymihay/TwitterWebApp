@@ -7,8 +7,9 @@ Please, login
 <br/><br/>
 
 <form action="login" method="post">
-    <div>Login: <input name="login" type="text"></div>
-    <div>Password: <input name="password" type="password"></div>
+    <div>Login: <input id="username" name="username" type="text"></div>
+    <div>Password: <input id="password" name="password" type="password"></div>
+    <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
     <button type="submit" value="login">Login</button>
     <button type="reset">Clear</button>
 </form>
