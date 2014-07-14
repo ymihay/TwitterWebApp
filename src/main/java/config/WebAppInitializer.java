@@ -13,7 +13,7 @@ import javax.servlet.ServletException;
  * Created by Admin on 01.07.2014.
  */
 @Order(2)
-public class WebAppInitializer extends AbstractAnnotationConfigDispatcherServletInitializer /*implements WebApplicationInitializer */ {
+public class WebAppInitializer extends AbstractAnnotationConfigDispatcherServletInitializer {
 
     private static Logger LOG = LoggerFactory.getLogger(WebAppInitializer.class);
 
