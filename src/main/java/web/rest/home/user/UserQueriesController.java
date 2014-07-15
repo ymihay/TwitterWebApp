@@ -8,8 +8,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
-import web.usermanager.UserManager;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
 /**
@@ -24,9 +24,6 @@ public class UserQueriesController {
 
     @Autowired
     private PostService postService;
-
-    @Autowired
-    private UserManager userManager;
 
     //curl -H Accept:application/json http://localhost:8080/rest/users/
     @RequestMapping
@@ -67,8 +64,11 @@ public class UserQueriesController {
             headers = "Accept=application/json")
     public
     @ResponseBody
-    ResponseEntity<User> getMyUserId() {
-        User user = userManager.getUser();
-        return new ResponseEntity<User>(user, HttpStatus.OK);
+    ResponseEntity<User> getMyUserId(HttpServletRequest request) {
+        User user = userService.findByLogin(request.getRemoteUser());
+        if (user != null) {
+            return new ResponseEntity<User>(user, HttpStatus.OK);
+        }
+        return new ResponseEntity<User>(HttpStatus.NO_CONTENT);
     }
 }

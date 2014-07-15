@@ -1,5 +1,6 @@
 package web.rest.friend;
 
+import core.domain.User;
 import core.service.user.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -9,7 +10,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
-import web.usermanager.UserManager;
+
+import javax.servlet.http.HttpServletRequest;
 
 /**
  * Created by Admin on 07.07.2014.
@@ -19,9 +21,6 @@ import web.usermanager.UserManager;
 public class FriendCommandsController {
     @Autowired
     private UserService userService;
-
-    @Autowired
-    private UserManager userManager;
 
     /**
      * Sets subscription on user. Similar to "add to friend action"
@@ -33,8 +32,10 @@ public class FriendCommandsController {
     @RequestMapping(value = "/{id}", method = RequestMethod.POST)
     public
     @ResponseBody
-    ResponseEntity addFriend(@PathVariable Integer id) {
-        Integer userId = userManager.getUser().getUserId();
+    ResponseEntity addFriend(@PathVariable Integer id, HttpServletRequest request) {
+        User user = userService.findByLogin(request.getRemoteUser());
+        Integer userId = user.getUserId();
+
         if (userService.isFollowingForUser(userId, id)) {
             return new ResponseEntity(HttpStatus.CONFLICT);
         }
@@ -55,8 +56,10 @@ public class FriendCommandsController {
     @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
     public
     @ResponseBody
-    ResponseEntity deleteFriend(@PathVariable Integer id) {
-        Integer userId = userManager.getUser().getUserId();
+    ResponseEntity deleteFriend(@PathVariable Integer id, HttpServletRequest request) {
+        User user = userService.findByLogin(request.getRemoteUser());
+        Integer userId = user.getUserId();
+
         if (!userService.isFollowingForUser(userId, id)) {
             return new ResponseEntity(HttpStatus.CONFLICT);
         }

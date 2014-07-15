@@ -12,7 +12,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.util.UriComponentsBuilder;
-import web.usermanager.UserManager;
+
+import javax.servlet.http.HttpServletRequest;
 
 /**
  * Created by Admin on 07.07.2014.
@@ -24,8 +25,6 @@ public class UserCommandsController {
     @Autowired
     private UserService userService;
 
-    @Autowired
-    private UserManager userManager;
 
     //curl -v -X POST -H content-type:application/json --data '{"userId":null,"firstName":"Yana :)","patronymic":"Mikhaylovna :)","lastName":"Mikhaylenko :)","login":"ymikhaylenko4444","password":"yanayana","sex":{"sexId":1,"sexName":"Male"},"country":{"countryId":2,"countryName":"USA"},"birthdate":630585252000,"subscribedList":null,"subscribedOnUserList":null,"postList":null}}' http://localhost:8080/rest/users/me
     @RequestMapping(method = RequestMethod.POST, consumes = "application/json", produces = "application/json")
@@ -60,8 +59,9 @@ public class UserCommandsController {
     @RequestMapping(method = RequestMethod.PUT, consumes = "application/json", produces = "application/json")
     public
     @ResponseBody
-    ResponseEntity<User> updateUser(@RequestBody User user, UriComponentsBuilder builder) {
-        User currentUser = userManager.getUser();
+    ResponseEntity<User> updateUser(@RequestBody User user, UriComponentsBuilder builder, HttpServletRequest request) {
+        User currentUser = userService.findByLogin(request.getRemoteUser());
+
         Integer userId = currentUser.getUserId();
         if (user.getUserId() == null) {
             return new ResponseEntity<User>(HttpStatus.NOT_ACCEPTABLE);
@@ -98,9 +98,10 @@ public class UserCommandsController {
     @RequestMapping(method = RequestMethod.DELETE)
     public
     @ResponseBody
-    ResponseEntity deleteUser() {
-        User user = userManager.getUser();
-        if (userService.delete(user)) {
+    ResponseEntity deleteUser(HttpServletRequest request) {
+        User user = userService.findByLogin(request.getRemoteUser());
+
+        if (userService.delete(user) || (user == null)) {
             return new ResponseEntity(HttpStatus.NO_CONTENT);
         }
         return new ResponseEntity(HttpStatus.METHOD_NOT_ALLOWED);

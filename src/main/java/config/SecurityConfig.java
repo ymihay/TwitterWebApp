@@ -37,10 +37,13 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .dataSource(dataSource)
                 .usersByUsernameQuery(userByNameSql)
                 .authoritiesByUsernameQuery(roleByNameSql);
+        //String for password hash. in DB it's custom md5 func
+        //.passwordEncoder(new Md5PasswordEncoder());
     }
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
+        // @formatter:off
         http
                 .authorizeRequests()
                         //.antMatchers("/resources/**").permitAll()
@@ -58,6 +61,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .permitAll()
                 .and()
                 .rememberMe();
+
+        // @formatter:on
+
     }
 
     @Override

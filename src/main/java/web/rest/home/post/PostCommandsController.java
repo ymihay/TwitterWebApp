@@ -3,6 +3,7 @@ package web.rest.home.post;
 import core.domain.Post;
 import core.domain.User;
 import core.service.post.PostService;
+import core.service.user.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -10,7 +11,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.util.UriComponentsBuilder;
-import web.usermanager.UserManager;
+
+import javax.servlet.http.HttpServletRequest;
 
 /**
  * Created by Admin on 07.07.2014.
@@ -23,14 +25,14 @@ public class PostCommandsController {
     private PostService postService;
 
     @Autowired
-    private UserManager userManager;
+    private UserService userService;
 
     //curl -v -X POST -H content-type:application/json --data '{"postId":null,"postMessage":"ggg","user":{"userId":3,"firstName":"Yana :)","patronymic":"Mikhaylovna :)","lastName":"Mikhaylenko :)","login":"ymikhaylenko","password":"yanayana","sex":null,"country":null,"birthdate":null,"subscribedList":null,"subscribedOnUserList":null,"postList":null}}' http://localhost:8080/rest/users/me/tweets
     @RequestMapping(method = RequestMethod.POST, consumes = "application/json", produces = "application/json")
     public
     @ResponseBody
-    ResponseEntity<Post> addTweet(@RequestBody Post post, UriComponentsBuilder builder) {
-        User currentUser = userManager.getUser();
+    ResponseEntity<Post> addTweet(@RequestBody Post post, UriComponentsBuilder builder, HttpServletRequest request) {
+        User currentUser = userService.findByLogin(request.getRemoteUser());
 
         if (!post.getUser().equals(currentUser)) {
             return new ResponseEntity<Post>(HttpStatus.NOT_ACCEPTABLE);
@@ -55,8 +57,9 @@ public class PostCommandsController {
     @RequestMapping(method = RequestMethod.PUT, consumes = "application/json", produces = "application/json")
     public
     @ResponseBody
-    ResponseEntity<Post> updateTweet(@RequestBody Post post, UriComponentsBuilder builder) {
-        User currentUser = userManager.getUser();
+    ResponseEntity<Post> updateTweet(@RequestBody Post post, UriComponentsBuilder builder, HttpServletRequest request) {
+        User currentUser = userService.findByLogin(request.getRemoteUser());
+
         Integer postId = post.getPostId();
         if (postId == null) {
             return new ResponseEntity<Post>(HttpStatus.NOT_ACCEPTABLE);
@@ -92,8 +95,9 @@ public class PostCommandsController {
     @RequestMapping(method = RequestMethod.DELETE)
     public
     @ResponseBody
-    ResponseEntity deletePost(@PathVariable Integer id) {
-        User user = userManager.getUser();
+    ResponseEntity deletePost(@PathVariable Integer id, HttpServletRequest request) {
+        User user = userService.findByLogin(request.getRemoteUser());
+
         Post post = postService.findById(id);
         if (post == null) {
             return new ResponseEntity(HttpStatus.CONFLICT);

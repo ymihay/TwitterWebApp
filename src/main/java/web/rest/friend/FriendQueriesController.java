@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
 /**
@@ -43,6 +44,19 @@ public class FriendQueriesController {
         }
         return new ResponseEntity<List>(users, HttpStatus.OK);
     }
+
+    @RequestMapping(value = "/me")
+    //curl -H Accept:application/json http://localhost:8080/rest/friends/me
+    public
+    @ResponseBody
+    ResponseEntity<List> getMyFriends(HttpServletRequest request) {
+        List<User> users = userService.findSubscriptions(request.getRemoteUser());
+        if (users.isEmpty()) {
+            return new ResponseEntity<List>(HttpStatus.NOT_FOUND);
+        }
+        return new ResponseEntity<List>(users, HttpStatus.OK);
+    }
+
 
     /**
      * Returns friends posts
